@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React ,{ Fragment, Suspense } from 'react';
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// DesignSystem
+import NoMatch from 'components/DesignSystem/NoMatch';
+
+// config
+import routes from 'config/routes';
+
+// package
+// import classnames from "classnames";
+// import './App.css';
+
+function App({match}) {
+    // all route
+    const Routes = routes.map((route, key) => (
+        <Route
+            key={`route_${key}`}
+            path={`${route.path}`}
+            exact={route.exact}
+            sensitive
+            render={() => {
+                return (
+                    <route.component
+                        localeMatch={match}
+                        routeData={route}
+                    />
+                );
+            }}
+        />
+    ));
+
+    return (
+        <div className="App">
+        William use
+        <Fragment>
+            {/* {(layouts.indexOf("intro") < 0 && layouts.indexOf("topNav") > 0) && (
+                <Suspense fallback={<div></div>}>
+                    <TopNav />
+                </Suspense>
+            )} */}
+            <div>
+                <Suspense fallback={<div></div>}>
+                    <Switch>
+                        {Routes}
+                        <Route component={NoMatch} />
+                    </Switch>
+                </Suspense>
+            </div>
+            {/* {
+                (layouts.indexOf("intro") < 0 && layouts.indexOf("no-footer") < 0) && (
+                    <Suspense fallback={<div style={{ display: "none" }} />}>
+                        {(getBooleanFromENV('REACT_APP_IS_HOME_V2', false)) ? <Footer2 /> : <Footer />}
+                    </Suspense>
+                )
+            } */}
+        </Fragment>
+        </div>
+    );
 }
 
-export default App;
+export default withRouter(App);
