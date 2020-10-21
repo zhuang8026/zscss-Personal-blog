@@ -9,6 +9,14 @@
 - git技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
+### `套件`
+    "animate.css": "^4.1.1"
+    "antd": "^4.7.2"
+    "moment": "^2.29.1"
+    "moment-timezone": "^0.5.31"
+    "node-sass": "^4.14.1"
+    "react-id-swiper": "^4.0.0"
+
 ### `功能說明`
 - 星星評分分析 (CRUD)
 
