@@ -6,14 +6,14 @@ const Home = lazy(() => import('components/pages/Home'))
 const routes = [
     {
         path: '/',
-        component: IntroPage,
+        component: Home,
         exact: true,
         authRequired: false,
         layouts: [],
     },
     {
-        path: '/home',
-        component: Home,
+        path: '/IntroPage',
+        component: IntroPage,
         exact: true,
         authRequired: false,
         layouts: [],
