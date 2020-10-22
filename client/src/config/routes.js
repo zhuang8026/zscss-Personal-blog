@@ -5,7 +5,7 @@ const Home = lazy(() => import('components/pages/Home'))
 
 const routes = [
     {
-        path: '/IntroPage',
+        path: '/',
         component: IntroPage,
         exact: true,
         authRequired: false,

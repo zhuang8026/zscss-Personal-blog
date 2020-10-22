@@ -9,4 +9,4 @@ const IntroPage = () => {
     )
 }
 
-export default IntroPage
+export default withRouter(IntroPage)

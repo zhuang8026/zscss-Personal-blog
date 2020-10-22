@@ -32,29 +32,28 @@ function App({match}) {
 
     return (
         <div className="App">
-        William use
-        <Fragment>
-            {/* {(layouts.indexOf("intro") < 0 && layouts.indexOf("topNav") > 0) && (
-                <Suspense fallback={<div></div>}>
-                    <TopNav />
-                </Suspense>
-            )} */}
-            <div>
-                <Suspense fallback={<div></div>}>
-                    <Switch>
-                        {Routes}
-                        <Route component={NoMatch} />
-                    </Switch>
-                </Suspense>
-            </div>
-            {/* {
-                (layouts.indexOf("intro") < 0 && layouts.indexOf("no-footer") < 0) && (
-                    <Suspense fallback={<div style={{ display: "none" }} />}>
-                        {(getBooleanFromENV('REACT_APP_IS_HOME_V2', false)) ? <Footer2 /> : <Footer />}
+            <Fragment>
+                {/* {(layouts.indexOf("intro") < 0 && layouts.indexOf("topNav") > 0) && (
+                    <Suspense fallback={<div></div>}>
+                        <TopNav />
                     </Suspense>
-                )
-            } */}
-        </Fragment>
+                )} */}
+                <div>
+                    <Suspense fallback={<div></div>}>
+                        <Switch>
+                            {Routes}
+                            <Route component={NoMatch} />
+                        </Switch>
+                    </Suspense>
+                </div>
+                {/* {
+                    (layouts.indexOf("intro") < 0 && layouts.indexOf("no-footer") < 0) && (
+                        <Suspense fallback={<div style={{ display: "none" }} />}>
+                            {(getBooleanFromENV('REACT_APP_IS_HOME_V2', false)) ? <Footer2 /> : <Footer />}
+                        </Suspense>
+                    )
+                } */}
+            </Fragment>
         </div>
     );
 }
