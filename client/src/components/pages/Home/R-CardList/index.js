@@ -18,7 +18,9 @@ const CardList = () => {
                         <div className="r_list_title">
                             <div className="r_list_title_left">
                                 <div className="r_list_head">
-                                    <img src="" alt="icon" />
+                                    <div className="figure_icon">
+                                        <img src={require(`images/Home/test.jpg`)} alt="頭像" />
+                                    </div>
                                 </div>
                                 <div className="r_list_content">
                                     <h2 className="right_list_title"> React 經驗分享 </h2>
@@ -26,7 +28,7 @@ const CardList = () => {
                                 </div>
                             </div>
                             <div className="r_list_title_right">
-                                <CloudUploadOutlined />
+                                <CloudUploadOutlined className="icon-20" />
                             </div>
                         </div>
                         <div className="r_list_bottom">
@@ -34,8 +36,8 @@ const CardList = () => {
                                 <Rate disabled allowHalf defaultValue={3.5} />
                             </div>
                             <div className="r_list_tag">
-                                <span>#Comment A</span>
-                                <span>#Comment B</span>
+                                <span>#太棒了</span>
+                                <span>#非常有幫助</span>
                             </div>
                             <div className="r_list_tag_content">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
@@ -51,7 +53,9 @@ const CardList = () => {
                         <div className="r_list_title">
                             <div className="r_list_title_left">
                                 <div className="r_list_head">
-                                    <img src="" alt="icon" />
+                                    <div className="figure_icon">
+                                        <img src={require(`images/Home/test.jpg`)} alt="頭像" />
+                                    </div>
                                 </div>
                                 <div className="r_list_content">
                                     <h2 className="right_list_title"> React 經驗分享 </h2>
@@ -59,7 +63,7 @@ const CardList = () => {
                                 </div>
                             </div>
                             <div className="r_list_title_right">
-                                <CloudUploadOutlined />
+                                <CloudUploadOutlined className="icon-20" />
                             </div>
                         </div>
                         <div className="r_list_bottom">
@@ -67,8 +71,8 @@ const CardList = () => {
                                 <Rate disabled allowHalf defaultValue={3.5} />
                             </div>
                             <div className="r_list_tag">
-                                <span>#Comment A</span>
-                                <span>#Comment B</span>
+                                <span>#太棒了</span>
+                                <span>#非常有幫助</span>
                             </div>
                             <div className="r_list_tag_content">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum

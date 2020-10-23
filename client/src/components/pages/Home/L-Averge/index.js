@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 // antd
-import { Rate } from 'antd';
+import { Rate } from 'antd'; // 星星
+import { Progress } from 'antd'; // 進度條
 import { StarFilled } from '@ant-design/icons';
 
 const Averge = () => {
@@ -28,7 +29,17 @@ const Averge = () => {
                         </div>
                         <span>(1,220)</span>
                     </div>
-                    <div className="rating_line"></div>
+                    <div className="rating_line">
+                        <Progress
+                            strokeColor={{
+                                '0%': '#0073e6',
+                                '100%': '#0ca'
+                            }}
+                            percent={90}
+                            status="active"
+                            showInfo={false}
+                        />
+                    </div>
                 </div>
                 <div className="rating_number">
                     <div className="rating_info">
@@ -39,7 +50,17 @@ const Averge = () => {
                         </div>
                         <span>(1,220)</span>
                     </div>
-                    <div className="rating_line"></div>
+                    <div className="rating_line">
+                        <Progress
+                            strokeColor={{
+                                '0%': '#0073e6',
+                                '100%': '#0ca'
+                            }}
+                            percent={70}
+                            status="active"
+                            showInfo={false}
+                        />
+                    </div>
                 </div>
                 <div className="rating_number">
                     <div className="rating_info">
@@ -50,7 +71,17 @@ const Averge = () => {
                         </div>
                         <span>(1,220)</span>
                     </div>
-                    <div className="rating_line"></div>
+                    <div className="rating_line">
+                        <Progress
+                            strokeColor={{
+                                '0%': '#0073e6',
+                                '100%': '#0ca'
+                            }}
+                            percent={27}
+                            status="active"
+                            showInfo={false}
+                        />
+                    </div>
                 </div>
                 <div className="rating_number">
                     <div className="rating_info">
@@ -61,7 +92,17 @@ const Averge = () => {
                         </div>
                         <span>(1,220)</span>
                     </div>
-                    <div className="rating_line"></div>
+                    <div className="rating_line">
+                        <Progress
+                            strokeColor={{
+                                '0%': '#0073e6',
+                                '100%': '#0ca'
+                            }}
+                            percent={19}
+                            status="active"
+                            showInfo={false}
+                        />
+                    </div>
                 </div>
                 <div className="rating_number">
                     <div className="rating_info">
@@ -72,7 +113,17 @@ const Averge = () => {
                         </div>
                         <span>(1,220)</span>
                     </div>
-                    <div className="rating_line"></div>
+                    <div className="rating_line">
+                        <Progress
+                            strokeColor={{
+                                '0%': '#0073e6',
+                                '100%': '#0ca'
+                            }}
+                            percent={10}
+                            status="active"
+                            showInfo={false}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

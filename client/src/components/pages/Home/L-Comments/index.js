@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const Comments = () => {
     return (
@@ -8,21 +8,21 @@ const Comments = () => {
             <div className="card_tag_list">
                 <ul>
                     <li className="card_tag">
-                        <span>#tag</span>
+                        <span>#太棒了</span>
                         <span>X 99</span>
                     </li>
                     <li className="card_tag">
-                        <span>#tag</span>
+                        <span>#非常有幫助</span>
                         <span>X 99</span>
                     </li>
                     <li className="card_tag">
-                        <span>#tag</span>
+                        <span>#寫得不錯</span>
                         <span>X 99</span>
                     </li>
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Comments;
