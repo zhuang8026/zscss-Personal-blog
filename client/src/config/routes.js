@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 
-const IntroPage = lazy(() => import('components/pages/IntroPage'))
-const Home = lazy(() => import('components/pages/Home'))
+const IntroPage = lazy(() => import('components/pages/IntroPage'));
+const Home = lazy(() => import('components/pages/Home'));
 
 const routes = [
     {
@@ -9,17 +9,15 @@ const routes = [
         component: Home,
         exact: true,
         authRequired: false,
-        layouts: [],
+        layouts: []
     },
     {
         path: '/IntroPage',
         component: IntroPage,
         exact: true,
         authRequired: false,
-        layouts: [],
+        layouts: []
     }
 ];
 
-
 export default routes;
-
