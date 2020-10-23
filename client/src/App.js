@@ -51,12 +51,14 @@ function App({ match, location }) {
                         <NavLeft />
                     </Suspense>
                 )}
+
                 <Suspense fallback={<></>}>
                     <Switch>
                         {Routes}
                         <Route component={NoMatch} />
                     </Switch>
                 </Suspense>
+
                 {layouts.indexOf('Footer') >= 0 && (
                     <Suspense fallback={<></>}>
                         <Footer />

@@ -1,0 +1,15 @@
+nav {
+    width: 90px;
+    height: 100%;
+    z-index: 1000;
+    background: #00274e;
+    position: fixed;
+
+    ul li {
+        padding: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
