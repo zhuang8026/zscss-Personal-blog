@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
+// antd
+import { WechatFilled } from '@ant-design/icons';
+
 const Admin = () => {
     return (
         <div className="rating_card Admin">
@@ -12,7 +15,7 @@ const Admin = () => {
                         <p>william.chaung</p>
                     </div>
                     <div className="rating_admin_icon">
-                        <img src="" alt="icon" />
+                        <WechatFilled />
                     </div>
                 </li>
                 <li>
@@ -21,7 +24,7 @@ const Admin = () => {
                         <p>margarita.cheng</p>
                     </div>
                     <div className="rating_admin_icon">
-                        <img src="" alt="icon" />
+                        <WechatFilled />
                     </div>
                 </li>
             </ul>

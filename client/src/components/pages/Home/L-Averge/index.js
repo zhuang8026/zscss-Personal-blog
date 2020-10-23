@@ -3,7 +3,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 // antd
 import { Rate } from 'antd';
-// import 'antd/dist/antd.css';
+import { StarFilled } from '@ant-design/icons';
 
 const Averge = () => {
     return (
@@ -13,8 +13,7 @@ const Averge = () => {
                 <div className="rating_all">
                     <h1>3.5</h1>
                     <div className="rating_all_star">
-                        {/* <div>🌟 🌟 🌟 🌟 🌟</div> */}
-                        <Rate />
+                        <Rate disabled allowHalf defaultValue={3.5} />
                         <div>(2,048 次評分)</div>
                     </div>
                 </div>
@@ -23,8 +22,9 @@ const Averge = () => {
                 <div className="rating_number">
                     <div className="rating_info">
                         <div className="star">
-                            <p>5 🌟</p>
-                            {/* <Icon name='star'/> */}
+                            <p>
+                                5 <StarFilled className="icon_star" />
+                            </p>
                         </div>
                         <span>(1,220)</span>
                     </div>
@@ -33,8 +33,9 @@ const Averge = () => {
                 <div className="rating_number">
                     <div className="rating_info">
                         <div className="star">
-                            <p>4 🌟</p>
-                            {/* <Icon name='star'/> */}
+                            <p>
+                                4 <StarFilled className="icon_star" />
+                            </p>
                         </div>
                         <span>(1,220)</span>
                     </div>
@@ -43,8 +44,9 @@ const Averge = () => {
                 <div className="rating_number">
                     <div className="rating_info">
                         <div className="star">
-                            <p>3 🌟</p>
-                            {/* <Icon name='star'/> */}
+                            <p>
+                                3 <StarFilled className="icon_star" />
+                            </p>
                         </div>
                         <span>(1,220)</span>
                     </div>
@@ -53,8 +55,9 @@ const Averge = () => {
                 <div className="rating_number">
                     <div className="rating_info">
                         <div className="star">
-                            <p>2 🌟</p>
-                            {/* <Icon name='star'/> */}
+                            <p>
+                                2 <StarFilled className="icon_star" />
+                            </p>
                         </div>
                         <span>(1,220)</span>
                     </div>
@@ -63,8 +66,9 @@ const Averge = () => {
                 <div className="rating_number">
                     <div className="rating_info">
                         <div className="star">
-                            <p>1 🌟</p>
-                            {/* <Icon name='star'/> */}
+                            <p>
+                                1 <StarFilled className="icon_star" />
+                            </p>
                         </div>
                         <span>(1,220)</span>
                     </div>

@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { withRouter, Link, Redirect } from 'react-router-dom';
+
+// antd
+import { Rate } from 'antd';
+import { CloudUploadOutlined } from '@ant-design/icons';
 
 const CardList = () => {
     return (
@@ -9,13 +13,12 @@ const CardList = () => {
                 <p>Showing 1-10 of 100 items</p>
             </div>
             <div className="rating_list_inner">
-
                 <div className="r_list">
                     <div className="r_list_card">
                         <div className="r_list_title">
                             <div className="r_list_title_left">
                                 <div className="r_list_head">
-                                    <img src="" alt="icon"/>
+                                    <img src="" alt="icon" />
                                 </div>
                                 <div className="r_list_content">
                                     <h2 className="right_list_title"> React 經驗分享 </h2>
@@ -23,19 +26,22 @@ const CardList = () => {
                                 </div>
                             </div>
                             <div className="r_list_title_right">
-                                <img src="" alt="icon"/>
+                                <CloudUploadOutlined />
                             </div>
                         </div>
                         <div className="r_list_bottom">
                             <div className="r_list_star">
-                                <div>🌟 🌟 🌟 🌟 🌟</div>
+                                <Rate disabled allowHalf defaultValue={3.5} />
                             </div>
                             <div className="r_list_tag">
                                 <span>#Comment A</span>
                                 <span>#Comment B</span>
                             </div>
                             <div className="r_list_tag_content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                                laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin
+                                sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate.
                             </div>
                         </div>
                     </div>
@@ -45,7 +51,7 @@ const CardList = () => {
                         <div className="r_list_title">
                             <div className="r_list_title_left">
                                 <div className="r_list_head">
-                                    <img src="" alt="icon"/>
+                                    <img src="" alt="icon" />
                                 </div>
                                 <div className="r_list_content">
                                     <h2 className="right_list_title"> React 經驗分享 </h2>
@@ -53,26 +59,29 @@ const CardList = () => {
                                 </div>
                             </div>
                             <div className="r_list_title_right">
-                                <img src="" alt="icon"/>
+                                <CloudUploadOutlined />
                             </div>
                         </div>
                         <div className="r_list_bottom">
                             <div className="r_list_star">
-                                <div>🌟 🌟 🌟 🌟 🌟</div>
+                                <Rate disabled allowHalf defaultValue={3.5} />
                             </div>
                             <div className="r_list_tag">
                                 <span>#Comment A</span>
                                 <span>#Comment B</span>
                             </div>
                             <div className="r_list_tag_content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                                laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin
+                                sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default CardList;
