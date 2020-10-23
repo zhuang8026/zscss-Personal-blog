@@ -11,7 +11,7 @@ import routes from 'config/routes';
 
 // package
 // import classnames from "classnames";
-// import './App.css';
+import 'scss/antd.css';
 
 function App({ match, location }) {
     const [layouts, setLayouts] = useState([]);
