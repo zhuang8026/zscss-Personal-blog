@@ -9,14 +9,14 @@ const routes = [
         component: Home,
         exact: true,
         authRequired: false,
-        layouts: []
+        layouts: ['NavLeft']
     },
     {
         path: '/IntroPage',
         component: IntroPage,
         exact: true,
         authRequired: false,
-        layouts: []
+        layouts: ['NavLeft', 'Footer']
     }
 ];
 

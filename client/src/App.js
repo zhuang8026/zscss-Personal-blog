@@ -1,8 +1,10 @@
-import React ,{ Fragment, Suspense } from 'react';
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import React, { Fragment, Suspense, useState, useEffect } from 'react';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 // DesignSystem
+import NavLeft from 'components/DesignSystem/NavLeft';
 import NoMatch from 'components/DesignSystem/NoMatch';
+import Footer from 'components/DesignSystem/Footer';
 
 // config
 import routes from 'config/routes';
@@ -11,7 +13,8 @@ import routes from 'config/routes';
 // import classnames from "classnames";
 // import './App.css';
 
-function App({match}) {
+function App({ match, location }) {
+    const [layouts, setLayouts] = useState([]);
     // all route
     const Routes = routes.map((route, key) => (
         <Route
@@ -20,39 +23,45 @@ function App({match}) {
             exact={route.exact}
             sensitive
             render={() => {
-                return (
-                    <route.component
-                        localeMatch={match}
-                        routeData={route}
-                    />
-                );
+                return <route.component localeMatch={match} routeData={route} />;
             }}
         />
     ));
 
+    // layout & url
+    const getLayoutsCallBack = () => {
+        routes.map((route, key) => {
+            let layoutPath = [];
+            layoutPath.push(route.path.replace('/', ''));
+            if (layoutPath[0].toUpperCase() === location.pathname.replace('/', '')) {
+                setLayouts(route.layouts);
+            }
+        });
+    };
+
+    useEffect(() => {
+        getLayoutsCallBack();
+    }, []);
+
     return (
         <div className="App">
             <Fragment>
-                {/* {(layouts.indexOf("intro") < 0 && layouts.indexOf("topNav") > 0) && (
-                    <Suspense fallback={<div></div>}>
-                        <TopNav />
+                {layouts.indexOf('NavLeft') >= 0 && (
+                    <Suspense fallback={<></>}>
+                        <NavLeft />
                     </Suspense>
-                )} */}
-                <div>
-                    <Suspense fallback={<div></div>}>
-                        <Switch>
-                            {Routes}
-                            <Route component={NoMatch} />
-                        </Switch>
+                )}
+                <Suspense fallback={<></>}>
+                    <Switch>
+                        {Routes}
+                        <Route component={NoMatch} />
+                    </Switch>
+                </Suspense>
+                {layouts.indexOf('Footer') >= 0 && (
+                    <Suspense fallback={<></>}>
+                        <Footer />
                     </Suspense>
-                </div>
-                {/* {
-                    (layouts.indexOf("intro") < 0 && layouts.indexOf("no-footer") < 0) && (
-                        <Suspense fallback={<div style={{ display: "none" }} />}>
-                            {(getBooleanFromENV('REACT_APP_IS_HOME_V2', false)) ? <Footer2 /> : <Footer />}
-                        </Suspense>
-                    )
-                } */}
+                )}
             </Fragment>
         </div>
     );
