@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 // antd
-import { WechatFilled } from '@ant-design/icons';
+import { CommentOutlined } from '@ant-design/icons';
 
 const Admin = () => {
     return (
@@ -15,9 +15,10 @@ const Admin = () => {
                             <img src={require(`images/Home/test.jpg`)} alt="頭像" />
                         </div>
                         <p>william.chaung</p>
+                        <div className="admin_online admin_state" />
                     </div>
                     <div className="rating_admin_icon">
-                        <WechatFilled className="icon-20" />
+                        <CommentOutlined className="icon-20" />
                     </div>
                 </li>
                 <li>
@@ -26,9 +27,10 @@ const Admin = () => {
                             <img src={require(`images/Home/test.jpg`)} alt="頭像" />
                         </div>
                         <p>margarita.cheng</p>
+                        <div className="admin_online" />
                     </div>
                     <div className="rating_admin_icon">
-                        <WechatFilled className="icon-20" />
+                        <CommentOutlined className="icon-20" />
                     </div>
                 </li>
             </ul>

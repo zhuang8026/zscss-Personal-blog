@@ -2775,7 +2775,7 @@ html {
   cursor: pointer;
 }
 .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
-  border-color: #40a9ff;
+  border-color: #0ca;
   border-right-width: 1px !important;
 }
 .ant-select-selection-item {
@@ -2825,7 +2825,7 @@ html {
   width: 12px;
   height: 12px;
   margin-top: -6px;
-  color: rgba(0, 0, 0, 0.25);
+  color: #fff;
   font-size: 12px;
   line-height: 1;
   text-align: center;
@@ -2894,7 +2894,7 @@ html {
 .ant-select-dropdown {
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.65);
+  color: #fff;
   font-variant: tabular-nums;
   line-height: 1.5715;
   list-style: none;
@@ -2910,7 +2910,7 @@ html {
   overflow: hidden;
   font-size: 14px;
   font-variant: initial;
-  background-color: #fff;
+  background-color: rgba(11, 65, 96, 0.6);
   border-radius: 2px;
   outline: none;
   -webkit-box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
@@ -2952,13 +2952,16 @@ html {
   display: block;
   min-height: 32px;
   padding: 5px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #fff;
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
   cursor: pointer;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+}
+.ant-select-item:hover {
+  color: #0b4160;
 }
 .ant-select-item-group {
   color: rgba(0, 0, 0, 0.45);

@@ -3,12 +3,38 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 // antd
 import { Rate } from 'antd';
-import { CloudUploadOutlined } from '@ant-design/icons';
+import { Select } from 'antd';
+import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
 
 const CardList = () => {
+    const { Option } = Select;
+
+    const handleChange = value => {
+        console.log(`selected: ${value}`);
+    };
+
     return (
         <div className="rating_r_list">
-            <div className="rating_r_select">selectBlock</div>
+            <div className="rating_r_select">
+                <Select defaultValue="all rating" style={{ width: 120 }} onChange={handleChange}>
+                    <Option value="0">all rating</Option>
+                    <Option value="1">
+                        1 <StarFilled className="icon_star" />
+                    </Option>
+                    <Option value="2">
+                        2 <StarFilled className="icon_star" />
+                    </Option>
+                    <Option value="3">
+                        3 <StarFilled className="icon_star" />
+                    </Option>
+                    <Option value="4">
+                        4 <StarFilled className="icon_star" />
+                    </Option>
+                    <Option value="5">
+                        5 <StarFilled className="icon_star" />
+                    </Option>
+                </Select>
+            </div>
             <div className="rating_r_Showing">
                 <p>Showing 1-10 of 100 items</p>
             </div>

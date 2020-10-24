@@ -12,9 +12,9 @@ const Averge = () => {
             <div className="card_title">Averge Rating</div>
             <div className="card_rating">
                 <div className="rating_all">
-                    <h1>3.5</h1>
+                    <h1>4.5</h1>
                     <div className="rating_all_star">
-                        <Rate disabled allowHalf defaultValue={3.5} />
+                        <Rate disabled allowHalf defaultValue={4.5} />
                         <div>(2,048 次評分)</div>
                     </div>
                 </div>

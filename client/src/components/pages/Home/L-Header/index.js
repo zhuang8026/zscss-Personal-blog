@@ -9,7 +9,7 @@ const Header = () => {
                     <img src={require(`images/Home/test.jpg`)} alt="頭像" />
                 </div>
                 <h2>
-                    Code share for <span>william.chuang</span>
+                    Code sharing for <span>william.chuang</span>
                 </h2>
             </div>
             <div className="rating_time">

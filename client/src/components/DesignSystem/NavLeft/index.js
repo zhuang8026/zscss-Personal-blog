@@ -8,19 +8,24 @@ const NavLeft = () => {
         <nav>
             <ul>
                 <li>
-                    <img src="#" alt="" />
+                    <span>come soon</span>
+                    <img src={require(`images/Home/zscss.png`)} alt="home" />
                 </li>
                 <li>
-                    <img src="#" alt="" />
+                    <span>come soon</span>
+                    <img src={require(`images/Home/zscss.png`)} alt="vue" />
                 </li>
                 <li>
-                    <img src="#" alt="" />
+                    <span>come soon</span>
+                    <img src={require(`images/Home/zscss.png`)} alt="react" />
                 </li>
                 <li>
-                    <img src="#" alt="" />
+                    <span>come soon</span>
+                    <img src={require(`images/Home/zscss.png`)} alt="php" />
                 </li>
                 <li>
-                    <img src="#" alt="" />
+                    <span>come soon</span>
+                    <img src={require(`images/Home/zscss.png`)} alt="mysql" />
                 </li>
             </ul>
         </nav>

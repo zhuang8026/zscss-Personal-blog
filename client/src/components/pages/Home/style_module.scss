@@ -8,7 +8,7 @@ main {
     display: block;
     overflow-y: auto;
     overflow-x: hidden;
-    background: url('../../../images/Home/bg.jpg') center center no-repeat;
+    background: url('../../../images/Home/1.jpg') center center no-repeat;
     background-size: cover;
     color: #fff;
 
@@ -68,7 +68,7 @@ main {
                 span {
                     font-size: 28px;
                     font-weight: 600;
-                    color: #7ca0c4;
+                    color: #0ca;
                 }
             }
         }
@@ -93,7 +93,6 @@ main {
                 overflow: hidden;
                 background-color: rgba(11, 65, 96, 0.4);
                 margin-bottom: 10px;
-
                 .card_title {
                     height: 44px;
                     display: flex;
@@ -113,6 +112,7 @@ main {
 
                     .rating_all {
                         display: flex;
+                        align-items: center;
 
                         h1 {
                             font-size: 55px;
@@ -169,6 +169,7 @@ main {
 
                     li {
                         display: flex;
+                        align-items: center;
                         justify-content: space-between;
                         padding: 10px 0;
                         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -178,6 +179,16 @@ main {
                             justify-content: center;
                             align-items: center;
                             font-weight: 600;
+                            .admin_online {
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 50%;
+                                background-color: gray;
+                                margin-left: 10px;
+                            }
+                            .admin_state {
+                                background-color: #0ca;
+                            }
                         }
 
                         .rating_admin_icon {
@@ -192,16 +203,11 @@ main {
             margin-left: 14px;
 
             .rating_r_select {
-                width: 200px;
-                height: 44px;
-                display: flex;
-                align-items: center;
-                border-radius: 10px;
-                box-sizing: border-box;
-                border: solid 1px rgba(130, 189, 251, 0);
-                background-color: rgba(255, 255, 255, 0.1);
-                padding: 0 10px;
                 margin-bottom: 10px;
+                .ant-select-selector {
+                    background-color: transparent;
+                    color: #fff;
+                }
             }
 
             .rating_r_Showing {
@@ -218,7 +224,12 @@ main {
                 overflow: hidden;
                 padding: 10px;
                 margin-bottom: 10px;
-
+                transition: 0.3s;
+                border: 1px solid transparent;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid rgb(211, 211, 211);
+                }
                 .r_list_card {
                     .r_list_title {
                         display: flex;
@@ -227,6 +238,7 @@ main {
                         .r_list_title_left {
                             display: flex;
                             justify-content: space-between;
+                            align-items: center;
 
                             .r_list_head {
                                 img {
