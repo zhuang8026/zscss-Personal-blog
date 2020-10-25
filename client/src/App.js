@@ -16,6 +16,8 @@ import 'scss/antd.css';
 function App({ match, location }) {
     const [layouts, setLayouts] = useState([]);
     // all route
+    console.log(layouts);
+
     const Routes = routes.map((route, key) => (
         <Route
             key={`route_${key}`}
@@ -32,8 +34,8 @@ function App({ match, location }) {
     const getLayoutsCallBack = () => {
         routes.map((route, key) => {
             let layoutPath = [];
-            layoutPath.push(route.path.replace('/', ''));
-            if (layoutPath[0].toUpperCase() === location.pathname.replace('/', '')) {
+            layoutPath.push(route.path.split('/')[1]);
+            if (layoutPath[0].toUpperCase() === location.pathname.replace('/', '').toUpperCase()) {
                 setLayouts(route.layouts);
             }
         });
