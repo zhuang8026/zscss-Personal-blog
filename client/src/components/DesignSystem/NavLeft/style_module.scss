@@ -26,11 +26,11 @@ nav {
                 width: 100%;
                 transition: 1s ease-in-out;
                 // animation: move 1s infinite;
-                &:hover {
-                    -webkit-animation: spin 1s linear infinite;
-                    -moz-animation: spin 1s linear infinite;
-                    animation: spin 1s linear infinite;
-                }
+            }
+            &:hover img {
+                -webkit-animation: spin 1s linear infinite;
+                -moz-animation: spin 1s linear infinite;
+                animation: spin 1s linear infinite;
             }
             @-moz-keyframes spin {
                 100% {

@@ -14,9 +14,9 @@ const Home = () => {
         <main>
             <NavTop />
             <Header />
-            <div class="rating_body">
+            <div className="rating_body">
                 {/* left container */}
-                <div class="rating_l_card">
+                <div className="rating_l_card">
                     <Averge />
                     <Comments />
                     <Admin />
