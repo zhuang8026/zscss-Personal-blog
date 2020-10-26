@@ -7,6 +7,7 @@ import { Progress } from 'antd'; // 進度條
 import { StarFilled } from '@ant-design/icons';
 
 const Averge = () => {
+    const [isStar, setIsStar] = useState(); // 全部評分
     return (
         <div className="rating_card Averge">
             <div className="card_title">Averge Rating</div>

@@ -13,24 +13,22 @@ router.get("/", (req, res) => {
 // 分頁
 // http://localhost:3009/products/pages/1 (Page) ~ ...
 router.get("/pages/:page?", async (req, res) => {
-  //   console.log(req);
   const output = await getDataList(req);
-  console.log(output);
   res.json(output);
 });
 
 // 分頁
 const getDataList = async (req) => {
-  // console.log(req)
-  const perPage = 16;
+  // console.log(req);
+  const perPage = 5;
   let page = parseInt(req.params.page) || 1;
   // let typeBrands = req.params.type || '';
-  // console.log('page',page)
+  // console.log("page", page);
   // console.log('types',typeBrands)
   const output = {
     // types: typeBrands,
-    page: page,
-    perPage: perPage,
+    page: page, // 目前在第幾頁
+    perPage: perPage, // 每頁有10筆資料
     totalRows: 0, // 總共有幾筆資料
     totalPages: 0, //總共有幾頁
     rows: [],
@@ -51,13 +49,15 @@ const getDataList = async (req) => {
   // console.log(brands)
 
   // const sql = `SELECT * FROM items WHERE itemsbrand=${typeBrands} LIMIT ${(page-1)*perPage}, ${perPage}`;
-  const sql = `SELECT * FROM items ORDER BY itemName ASC LIMIT ${
+  const sql = `SELECT * FROM items ORDER BY itemId ASC LIMIT ${
     (page - 1) * perPage
   }, ${perPage}`;
   const [r2] = await db.query(sql);
   if (r2) output.rows = r2;
+  output.rows = r2;
   for (let i of r2) {
-    i.created_at = moment(i.created_at).format("YYYY-MM-DD");
+    i.created_at = moment(i.created_at).format("YYYY/MM/DD, HH:mm");
+    i.updated_at = moment(i.updated_at).format("YYYY/MM/DD, HH:mm");
   }
   return output;
 };

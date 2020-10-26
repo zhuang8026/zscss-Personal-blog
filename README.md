@@ -7,7 +7,7 @@
 - 基礎技術支持: html5(websocket) + sass
 - 前端技術支持: react.js + hooks + javaScript(ES6)
 - 後端技術支持: node.js + express.js + mysql
-- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/)
+- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios)
 - git 技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
@@ -21,6 +21,7 @@
     "moment-timezone": "^0.5.31"
     "react-id-swiper": "^4.0.0"
     "prettier": "^2.1.2"
+    "axios": "^0.21.0"
 
 ### `- 功能說明 -`
 

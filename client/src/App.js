@@ -34,7 +34,7 @@ function App({ match, location }) {
         routes.map((route, key) => {
             let layoutPath = [];
             layoutPath.push(route.path.split('/')[1]);
-            if (layoutPath[0].toUpperCase() === location.pathname.replace('/', '').toUpperCase()) {
+            if (layoutPath[0].toUpperCase() === location.pathname.split('/')[1].toUpperCase()) {
                 setLayouts(route.layouts);
             }
         });
