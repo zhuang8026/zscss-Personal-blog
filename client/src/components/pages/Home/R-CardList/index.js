@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 // API
+import axios from 'axios';
 import { productsPagesAPI } from 'api/products';
 
+// DesignSystem
 import Loading from 'components/DesignSystem/Loading';
 
 // antd
@@ -13,9 +14,10 @@ import { Select } from 'antd';
 import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
 
 const CardList = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isPage, setIsPage] = useState(1);
-    const [isData, setIsData] = useState({});
+    const [isLoading, setIsLoading] = useState(true); // 載入
+    const [isPage, setIsPage] = useState(1); // 頁碼
+    const [isData, setIsData] = useState({}); // 此頁資料
+    const fetchListener = useRef(null); // fetch
     const { Option } = Select;
 
     const handleChange = value => {
@@ -25,9 +27,9 @@ const CardList = () => {
     // API 獲取此頁資料
     const productsPagesAPICallBack = () => {
         setIsLoading(true);
-        axios(productsPagesAPI('GET', isPage))
+        fetchListener.current = axios(productsPagesAPI('GET', isPage))
             .then(result => {
-                console.log(result.data);
+                // console.log(result.data);
                 setTimeout(() => {
                     setIsLoading(false);
                     setIsData(result.data);
@@ -37,6 +39,15 @@ const CardList = () => {
                 console.error(err);
             });
     };
+
+    //  取消監聽
+    useEffect(() => {
+        return () => {
+            if (fetchListener.current) {
+                fetchListener.current.unsubscribe();
+            }
+        };
+    }, []);
 
     // 商品數量
     useEffect(() => {
@@ -84,7 +95,7 @@ const CardList = () => {
                     <>
                         {isData.rows.map((data, index) => {
                             return (
-                                <div className="r_list">
+                                <div className="r_list" key={index}>
                                     <div className="r_list_card">
                                         <div className="r_list_title">
                                             <div className="r_list_title_left">

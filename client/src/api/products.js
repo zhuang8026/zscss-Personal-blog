@@ -9,6 +9,17 @@ export const productsPagesAPI = (method, data) => {
     };
 };
 
+// taring001 星星評分
+export const ratingAllAPI = method => {
+    return {
+        method: method,
+        baseURL: 'http://localhost:3009',
+        url: `products/all`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    };
+};
+
 // account214, previously member010
 // export const productsPagesAPI = data =>
 //     request('GET', `http://localhost:3009/products/pages/${data}`, {

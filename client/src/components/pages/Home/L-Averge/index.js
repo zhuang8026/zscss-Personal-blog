@@ -1,22 +1,72 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
+// API
+import axios from 'axios';
+import { ratingAllAPI } from 'api/products';
+
 // antd
 import { Rate } from 'antd'; // 星星
 import { Progress } from 'antd'; // 進度條
 import { StarFilled } from '@ant-design/icons';
 
 const Averge = () => {
-    const [isStar, setIsStar] = useState(); // 全部評分
+    const [isLoading, setIsLoading] = useState(true); // 載入
+    const [isStar, setIsStar] = useState([]); // 全部評分
+    const [isRating, setIsRating] = useState(0.0); // 平均分
+    const [one, setOne] = useState(0); // 1 star
+    const [two, setTwo] = useState(0); // 2 star
+    const [three, setThree] = useState(0); // 3 star
+    const [four, setFour] = useState(0); // 4 star
+    const [five, setFive] = useState(0); // 5 star
+    const fetchListener = useRef(null); // fetch
+    let i = 0;
+    let s = 0;
+    const ratingAllAPICallBack = () => {
+        fetchListener.current = axios(ratingAllAPI('GET'))
+            .then(result => {
+                // console.log(result.data);
+                setTimeout(() => {
+                    setIsLoading(false);
+                    setIsStar(result.data[0]);
+
+                    result.data[0].map((data, index) => {
+                        i += data.itemStar;
+                        if (data.itemStar === 3) {
+                            s += data.itemStar;
+                        }
+                    });
+                    setThree(s / i);
+                    setIsRating(i / result.data[0].length);
+                }, 5000);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+    // 評分
+    useEffect(() => {
+        ratingAllAPICallBack();
+    }, []);
+
+    //  取消監聽
+    useEffect(() => {
+        return () => {
+            if (fetchListener.current) {
+                fetchListener.current.unsubscribe();
+            }
+        };
+    }, []);
+
     return (
         <div className="rating_card Averge">
             <div className="card_title">Averge Rating</div>
             <div className="card_rating">
                 <div className="rating_all">
-                    <h1>4.5</h1>
+                    <h1>{isRating.toFixed(1)}</h1>
                     <div className="rating_all_star">
-                        <Rate disabled allowHalf defaultValue={4.5} />
-                        <div>(2,048 次評分)</div>
+                        <Rate disabled allowHalf defaultValue={0} value={isRating.toFixed(1)} />
+                        <div>({isStar.length} 次評分)</div>
                     </div>
                 </div>
             </div>
@@ -78,7 +128,7 @@ const Averge = () => {
                                 '0%': '#0073e6',
                                 '100%': '#0ca'
                             }}
-                            percent={27}
+                            percent={parseInt(three * 100)}
                             status="active"
                             showInfo={false}
                         />

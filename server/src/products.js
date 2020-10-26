@@ -10,6 +10,16 @@ router.get("/", (req, res) => {
   res.send("產品列表");
 });
 
+// 星星評分
+// http://localhost:3009/products/all
+router.get("/all", (req, res) => {
+  const sql = `SELECT itemId, itemStar FROM items WHERE 1`;
+  db.query(sql).then((results) => {
+    // console.log(results);
+    res.json(results);
+  });
+});
+
 // 分頁
 // http://localhost:3009/products/pages/1 (Page) ~ ...
 router.get("/pages/:page?", async (req, res) => {
@@ -44,9 +54,6 @@ const getDataList = async (req) => {
   output.page = page;
 
   if (!output.page) output;
-
-  // const brands = `SELECT * FROM items WHERE itemsbrand=${typeBrands}`;
-  // console.log(brands)
 
   // const sql = `SELECT * FROM items WHERE itemsbrand=${typeBrands} LIMIT ${(page-1)*perPage}, ${perPage}`;
   const sql = `SELECT * FROM items ORDER BY itemId ASC LIMIT ${
