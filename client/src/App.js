@@ -15,9 +15,8 @@ import 'scss/antd.css';
 
 function App({ match, location }) {
     const [layouts, setLayouts] = useState([]);
-    // all route
-    console.log(layouts);
 
+    // all route
     const Routes = routes.map((route, key) => (
         <Route
             key={`route_${key}`}

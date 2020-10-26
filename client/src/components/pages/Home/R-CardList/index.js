@@ -16,6 +16,23 @@ const CardList = () => {
         console.log(`selected: ${value}`);
     };
 
+    // 商品數量
+    // useEffect(() => {
+    //     fetch('http://localhost:3009/products/list', {
+    //         method: 'get',
+    //         headers: {
+    //             Accept: 'application/json',
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(response => {
+    //             return response.json();
+    //         })
+    //         .then(response => {
+    //             console.log(response);
+    //         });
+    // }, []);
+
     return (
         <div className="rating_r_list">
             <div className="rating_r_select">
