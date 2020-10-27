@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-
+    
 // API
 import axios from 'axios';
 import { ratingAllAPI } from 'api/products';
@@ -9,7 +9,7 @@ import { ratingAllAPI } from 'api/products';
 import { Rate } from 'antd'; // 星星
 import { Progress } from 'antd'; // 進度條
 import { StarFilled } from '@ant-design/icons';
-    
+
 const Averge = () => {
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isStar, setIsStar] = useState([]); // 全部評分
