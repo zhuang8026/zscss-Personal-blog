@@ -22,8 +22,26 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
         <title>首頁 | ZScss</title>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VR0G8YECQY"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-VR0G8YECQY');
+        </script>
     </head>
     <body>
+        <!-- <noscript
+            ><iframe
+                src="https://www.googletagmanager.com/ns.html?id=G-VR0G8YECQY"
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden"
+            ></iframe
+        ></noscript> -->
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <!--
@@ -36,4 +54,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     --></body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 </html>

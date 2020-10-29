@@ -11,29 +11,37 @@ import Loading from 'components/DesignSystem/Loading';
 // antd
 import { Rate } from 'antd';
 import { Select } from 'antd';
+import { Pagination } from 'antd';
 import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
 
 const CardList = () => {
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isPage, setIsPage] = useState(1); // 頁碼
+    const [isStar, setIsStar] = useState(0); // rating 數量
     const [isData, setIsData] = useState({}); // 此頁資料
     const fetchListener = useRef(null); // fetch
     const { Option } = Select;
 
     const handleChange = value => {
         console.log(`selected: ${value}`);
+        setIsStar(value);
+        setIsPage(1);
     };
 
     // API 獲取此頁資料
     const productsPagesAPICallBack = () => {
+        const data = {
+            isPage: isPage,
+            isStar: isStar
+        };
         setIsLoading(true);
-        fetchListener.current = axios(productsPagesAPI('GET', isPage))
+        fetchListener.current = axios(productsPagesAPI('GET', data))
             .then(result => {
-                // console.log(result.data);
+                // console.log(result);
                 setTimeout(() => {
                     setIsLoading(false);
                     setIsData(result.data);
-                }, 5000);
+                }, 1000);
             })
             .catch(err => {
                 console.error(err);
@@ -42,17 +50,17 @@ const CardList = () => {
 
     //  取消監聽
     useEffect(() => {
-        return () => {
-            if (fetchListener.current) {
-                fetchListener.current.unsubscribe();
-            }
-        };
+        // return () => {
+        //     if (fetchListener.current) {
+        //         fetchListener.current.unsubscribe();
+        //     }
+        // };
     }, []);
 
     // 商品數量
     useEffect(() => {
         productsPagesAPICallBack();
-    }, [isPage]);
+    }, [isPage, isStar]);
 
     return (
         <div className="rating_r_list">
@@ -127,6 +135,15 @@ const CardList = () => {
                                 </div>
                             );
                         })}
+                        <Pagination
+                            simple
+                            current={isPage}
+                            defaultCurrent={1}
+                            total={parseInt(`${isData.totalPages}0`)}
+                            onChange={event => {
+                                setIsPage(event);
+                            }}
+                        />
                     </>
                 ) : (
                     <>NoData</>

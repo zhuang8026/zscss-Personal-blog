@@ -20,9 +20,9 @@ router.get("/all", (req, res) => {
   });
 });
 
-// 分頁
-// http://localhost:3009/products/pages/1 (Page) ~ ...
-router.get("/pages/:page?", async (req, res) => {
+// 星星評分篩選 + 資料分頁
+// http://localhost:3009/products/pages/1/5 (Page) ~ ...
+router.get("/pages/:page?/:star?", async (req, res) => {
   const output = await getDataList(req);
   res.json(output);
 });
@@ -32,21 +32,22 @@ const getDataList = async (req) => {
   // console.log(req);
   const perPage = 5;
   let page = parseInt(req.params.page) || 1;
+  let star = parseInt(req.params.star);
   // let typeBrands = req.params.type || '';
   // console.log("page", page);
   // console.log('types',typeBrands)
   const output = {
-    // types: typeBrands,
+    star: star, // 星星數量
     page: page, // 目前在第幾頁
     perPage: perPage, // 每頁有10筆資料
     totalRows: 0, // 總共有幾筆資料
     totalPages: 0, //總共有幾頁
     rows: [],
   };
-  // console.log(output);
+
   const [r1] = await db.query("SELECT COUNT(1) num FROM `items`");
-  // console.log(r1)
-  output.totalRows = r1[0].num;
+
+  output.totalRows = r1[0].num; // 全部資料數量
   output.totalPages = Math.ceil(output.totalRows / perPage);
   if (page < 1) page = 1;
   if (page > output.totalPages) page = output.totalPages;
@@ -56,16 +57,28 @@ const getDataList = async (req) => {
   if (!output.page) output;
 
   // const sql = `SELECT * FROM items WHERE itemsbrand=${typeBrands} LIMIT ${(page-1)*perPage}, ${perPage}`;
-  const sql = `SELECT * FROM items ORDER BY itemId ASC LIMIT ${
-    (page - 1) * perPage
-  }, ${perPage}`;
+  const sql = `SELECT * FROM items Where itemStar${
+    star !== 0 ? "=" + star : ""
+  } ORDER BY itemId ASC LIMIT ${(page - 1) * perPage}, ${perPage}`;
+
   const [r2] = await db.query(sql);
   if (r2) output.rows = r2;
+
+  // 如果 star 分數 不是 all rating 才執行
+  if (star !== 0) {
+    output.totalRows = r2.length;
+    output.totalPages = Math.ceil(output.totalRows / perPage);
+    if (page < 1) page = 1;
+    if (page > output.totalPages) page = output.totalPages;
+    if (output.totalPages === 0) page = 0;
+  }
+
   output.rows = r2;
   for (let i of r2) {
     i.created_at = moment(i.created_at).format("YYYY/MM/DD, HH:mm");
     i.updated_at = moment(i.updated_at).format("YYYY/MM/DD, HH:mm");
   }
+
   return output;
 };
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-    
+
+import { from } from 'rxjs';
+
 // API
 import axios from 'axios';
 import { ratingAllAPI } from 'api/products';
@@ -20,30 +22,49 @@ const Averge = () => {
     const [four, setFour] = useState(0); // 4 star
     const [five, setFive] = useState(0); // 5 star
     const fetchListener = useRef(null); // fetch
-    let i = 0;
-    let s = 0;
-    const ratingAllAPICallBack = () => {
-        fetchListener.current = axios(ratingAllAPI('GET'))
-            .then(result => {
-                // console.log(result.data);
-                setTimeout(() => {
-                    setIsLoading(false);
-                    setIsStar(result.data[0]);
+    let i = 0; // 1~5 總加
+    let s = 0; // 1
+    let ss = 0; // 2
+    let sss = 0; // 3
+    let ssss = 0; // 4
+    let sssss = 0; // 5
 
-                    result.data[0].map((data, index) => {
-                        i += data.itemStar;
-                        if (data.itemStar === 3) {
+    const ratingAllAPICallBack = () => {
+        fetchListener.current = from(axios(ratingAllAPI('GET'))).subscribe(res => {
+            setTimeout(() => {
+                setIsLoading(false);
+                setIsStar(res.data[0]);
+
+                res.data[0].map((data, index) => {
+                    i += data.itemStar;
+                    switch (data.itemStar) {
+                        case 1:
                             s += data.itemStar;
-                        }
-                    });
-                    setThree(s / i);
-                    setIsRating(i / result.data[0].length);
-                }, 5000);
-            })
-            .catch(err => {
-                console.error(err);
-            });
+                            break;
+                        case 2:
+                            ss += data.itemStar;
+                            break;
+                        case 3:
+                            sss += data.itemStar;
+                            break;
+                        case 4:
+                            ssss += data.itemStar;
+                            break;
+                        case 5:
+                            sssss += data.itemStar;
+                            break;
+                    }
+                });
+                setOne(s / i);
+                setTwo(ss / i);
+                setThree(sss / i);
+                setFour(ssss / i);
+                setFive(sssss / i);
+                setIsRating(i / res.data[0].length);
+            }, 1000);
+        });
     };
+
     // 評分
     useEffect(() => {
         ratingAllAPICallBack();
@@ -78,7 +99,7 @@ const Averge = () => {
                                 5 <StarFilled className="icon_star" />
                             </p>
                         </div>
-                        <span>(1,220)</span>
+                        <span>({parseInt(five * 100)}%)</span>
                     </div>
                     <div className="rating_line">
                         <Progress
@@ -86,7 +107,7 @@ const Averge = () => {
                                 '0%': '#0073e6',
                                 '100%': '#0ca'
                             }}
-                            percent={90}
+                            percent={parseInt(five * 100)}
                             status="active"
                             showInfo={false}
                         />
@@ -99,7 +120,7 @@ const Averge = () => {
                                 4 <StarFilled className="icon_star" />
                             </p>
                         </div>
-                        <span>(1,220)</span>
+                        <span>({parseInt(four * 100)}%)</span>
                     </div>
                     <div className="rating_line">
                         <Progress
@@ -107,7 +128,7 @@ const Averge = () => {
                                 '0%': '#0073e6',
                                 '100%': '#0ca'
                             }}
-                            percent={70}
+                            percent={parseInt(four * 100)}
                             status="active"
                             showInfo={false}
                         />
@@ -120,7 +141,7 @@ const Averge = () => {
                                 3 <StarFilled className="icon_star" />
                             </p>
                         </div>
-                        <span>(1,220)</span>
+                        <span>({parseInt(three * 100)}%)</span>
                     </div>
                     <div className="rating_line">
                         <Progress
@@ -141,7 +162,7 @@ const Averge = () => {
                                 2 <StarFilled className="icon_star" />
                             </p>
                         </div>
-                        <span>(1,220)</span>
+                        <span>({parseInt(two * 100)}%)</span>
                     </div>
                     <div className="rating_line">
                         <Progress
@@ -149,7 +170,7 @@ const Averge = () => {
                                 '0%': '#0073e6',
                                 '100%': '#0ca'
                             }}
-                            percent={19}
+                            percent={parseInt(two * 100)}
                             status="active"
                             showInfo={false}
                         />
@@ -162,7 +183,7 @@ const Averge = () => {
                                 1 <StarFilled className="icon_star" />
                             </p>
                         </div>
-                        <span>(1,220)</span>
+                        <span>({parseInt(one * 100)}%)</span>
                     </div>
                     <div className="rating_line">
                         <Progress
@@ -170,7 +191,7 @@ const Averge = () => {
                                 '0%': '#0073e6',
                                 '100%': '#0ca'
                             }}
-                            percent={10}
+                            percent={parseInt(one * 100)}
                             status="active"
                             showInfo={false}
                         />

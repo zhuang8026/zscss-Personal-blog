@@ -1,23 +1,34 @@
 import React, { lazy } from 'react';
 
 const Home = lazy(() => import('components/pages/Home'));
-const pen = lazy(() => import('components/pages/pen'));
+// const pen = lazy(() => import('components/pages/pen'));
 const penDetail = lazy(() => import('components/pages/penDetail'));
+
+//admin
+const SiginIn = lazy(() => import('components/pages/Admin/SiginIn'));
+const SiginUp = lazy(() => import('components/pages/Admin/SiginUp'));
 
 const routes = [
     {
-        path: '/home',
+        path: '/',
         component: Home,
         exact: true,
         authRequired: false,
         layouts: ['NavLeft']
     },
     {
-        path: '/pen',
-        component: pen,
+        path: '/admin/sign-in',
+        component: SiginIn,
         exact: true,
         authRequired: false,
-        layouts: ['NavLeft', 'Footer']
+        layouts: []
+    },
+    {
+        path: '/admin/sign-up',
+        component: SiginUp,
+        exact: true,
+        authRequired: false,
+        layouts: ['']
     },
     {
         path: '/pen-detail/:id?',

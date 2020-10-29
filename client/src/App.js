@@ -42,7 +42,7 @@ function App({ match, location }) {
 
     useEffect(() => {
         getLayoutsCallBack();
-    }, []);
+    });
 
     return (
         <div className="App">

@@ -16616,10 +16616,10 @@ textarea.ant-picker-input > input {
   width: 100%;
   min-width: 0;
   padding: 4px 11px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #fff;
   font-size: 14px;
   line-height: 1.5715;
-  background-color: #fff;
+  /* background-color: #fff; */
   background-image: none;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
@@ -16728,6 +16728,7 @@ textarea.ant-input-affix-wrapper {
   padding-left: 0;
   border: none;
   outline: none;
+  color:#fff;
 }
 .ant-input-affix-wrapper > input.ant-input:focus {
   -webkit-box-shadow: none;
@@ -16824,12 +16825,13 @@ textarea.ant-input-affix-wrapper {
   color: rgba(0, 0, 0, 0.65);
   font-size: 14px;
   line-height: 1.5715;
-  background-color: #fff;
+  /* background-color: #fff; */
   background-image: none;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: transparent;
 }
 .ant-input::-moz-placeholder {
   opacity: 1;
@@ -20443,14 +20445,14 @@ textarea.ant-input-number {
 .ant-pagination-prev,
 .ant-pagination-jump-prev,
 .ant-pagination-jump-next {
-  margin-right: 8px;
+  /* margin-right: 8px; */
 }
 .ant-pagination-prev,
 .ant-pagination-next,
 .ant-pagination-jump-prev,
 .ant-pagination-jump-next {
   display: inline-block;
-  min-width: 32px;
+  min-width: 24px;
   height: 32px;
   color: rgba(0, 0, 0, 0.65);
   font-family: Arial;
@@ -20485,7 +20487,7 @@ textarea.ant-input-number {
   height: 100%;
   font-size: 12px;
   text-align: center;
-  background-color: #fff;
+  background-color: transparent;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
   outline: none;
@@ -20510,7 +20512,7 @@ textarea.ant-input-number {
 .ant-pagination-disabled .ant-pagination-item-link,
 .ant-pagination-disabled:hover .ant-pagination-item-link,
 .ant-pagination-disabled:focus .ant-pagination-item-link {
-  color: rgba(0, 0, 0, 0.25);
+  color: #fff;
   border-color: #d9d9d9;
   cursor: not-allowed;
 }
@@ -20633,6 +20635,7 @@ textarea.ant-pagination-options-quick-jumper input {
 .ant-pagination-simple .ant-pagination-next .ant-pagination-item-link {
   height: 24px;
   border: 0;
+  color: #fff;
 }
 .ant-pagination-simple .ant-pagination-prev .ant-pagination-item-link::after,
 .ant-pagination-simple .ant-pagination-next .ant-pagination-item-link::after {
@@ -20643,6 +20646,7 @@ textarea.ant-pagination-options-quick-jumper input {
   display: inline-block;
   height: 24px;
   margin-right: 8px;
+  color: #fff;
 }
 .ant-pagination-simple .ant-pagination-simple-pager input {
   -webkit-box-sizing: border-box;
@@ -20651,7 +20655,7 @@ textarea.ant-pagination-options-quick-jumper input {
   margin-right: 8px;
   padding: 0 6px;
   text-align: center;
-  background-color: #fff;
+  background-color: transparent;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
   outline: none;

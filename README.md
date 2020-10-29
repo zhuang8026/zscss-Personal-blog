@@ -7,7 +7,7 @@
 - 基礎技術支持: html5(websocket) + sass
 - 前端技術支持: react.js + hooks + javaScript(ES6)
 - 後端技術支持: node.js + express.js + mysql
-- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios)
+- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from)
 - git 技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
@@ -22,6 +22,7 @@
     "react-id-swiper": "^4.0.0"
     "prettier": "^2.1.2"
     "axios": "^0.21.0"
+    "rxjs": "^6.6.3"
 
 ### `- 功能說明 -`
 
@@ -30,4 +31,12 @@
 ### `- 版本控制 -`
 
 - Version - v1.1
-  - 20201021 - v1.1 - 開始製作
+  - 20201021 - v1.1.1 - 開始製作
+  - 20201022 - v1.1.2 - UI 介面完成
+    - 20201023 - v1.1.2 - loading 效果完成
+  - 20201024 - v1.1.3 - node 環境架設 / server
+    - 20201025 - v1.1.3 - 安裝前端套件 (axios + swiper)
+    - 20201026 - v1.1.3 - 安裝後端套件 (cors + moment-timezone + mysql2 + multer + cookie-parser)
+  - 20201027 - v1.1.4 - client端 與 server端 連接
+    - 20201028 - v1.1.4 - filter 星星評分完成
+    - 20201029 - v1.1.4 - admin登入開始製作

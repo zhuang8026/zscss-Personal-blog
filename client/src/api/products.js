@@ -3,7 +3,7 @@ export const productsPagesAPI = (method, data) => {
     return {
         method: method,
         baseURL: 'http://localhost:3009', // window.location.origin
-        url: `products/pages/${data}`,
+        url: `products/pages/${data.isPage}/${data.isStar}`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
     };
