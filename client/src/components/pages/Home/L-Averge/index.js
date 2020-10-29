@@ -72,6 +72,7 @@ const Averge = () => {
 
     //  取消監聽
     useEffect(() => {
+        // if (fetchListener.current) fetchListener.current.unsubscribe();
         return () => {
             if (fetchListener.current) {
                 fetchListener.current.unsubscribe();

@@ -33,6 +33,9 @@ main {
 
                 .btn_left {
                     margin-right: 10px;
+                    a {
+                        color: #fff;
+                    }
                 }
 
                 .btn_right {
@@ -75,6 +78,34 @@ main {
 
         .rating_time {
             font-size: 14px;
+            .rating_data {
+                display: flex;
+                align-items: center;
+                span {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+                .rating_loading {
+                    width: 130px;
+                    height: 20px;
+                    border-radius: 10px;
+                    opacity: 0.6;
+                    background: linear-gradient(90deg, #0073e6, #0ca);
+                    background-size: 200% 200%;
+                    -webkit-animation: gradient 3.5s linear infinite;
+                    -moz-animation: gradient 3.5s linear infinite;
+                    animation: gradient 3.5s ease infinite;
+                }
+                .rating_t1 {
+                    width: 140px;
+                }
+                .rating_t2 {
+                    width: 94px;
+                }
+                .rating_t3 {
+                    width: 150px;
+                }
+            }
         }
     }
 
@@ -228,7 +259,10 @@ main {
                 border: 1px solid transparent;
                 cursor: pointer;
                 &:hover {
-                    border: 1px solid rgb(211, 211, 211);
+                    border: 1px solid #0ca;
+                    // border-width: 0 0 6px 0;
+                    // border-image: linear-gradient(90deg, #0073e6, #0ca);
+                    // border-image-slice: 1;
                 }
                 .r_list_card {
                     .r_list_title {
