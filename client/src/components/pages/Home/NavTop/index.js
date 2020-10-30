@@ -4,6 +4,9 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const NavTop = () => {
+    const [admin, setAdmin] = useState(Cookies.get('adminData'));
+
+
     // const WEDURL = window.location.href;
     const SiginOutCallBack = () => {
         Cookies.remove('adminData', { path: '' });

@@ -14,7 +14,7 @@
         max-width: 400px;
         width: 100%;
         background-color: rgba(11, 65, 96, 0.5);
-        padding: 30px;
+        padding: 30px 30px 10px 30px;
         border-radius: 5px;
         .login-form {
             max-width: 400px;
@@ -32,4 +32,13 @@
             width: 100%;
         }
     }
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(11, 65, 96, 1) inset !important;
+    -webkit-text-fill-color: #fff !important;
 }

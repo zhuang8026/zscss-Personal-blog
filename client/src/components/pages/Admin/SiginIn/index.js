@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 import { from } from 'rxjs';
@@ -12,6 +12,9 @@ import { postAdminSignIinAPI } from 'api/admin';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
+// Context
+// import { Context as AuthStorage } from 'contexts/Auth';
+
 import '../style_module.scss';
 
 const SiginIn = ({ history }) => {
@@ -19,6 +22,7 @@ const SiginIn = ({ history }) => {
     const [password, setPassword] = useState(''); // password
     const [isLoading, setIsLoading] = useState(false); // 載入
     const fetchListener = useRef(null); // fetch
+
     // 登入
     const postAdminSignIinAPICallBack = data => {
         setIsLoading(true);
@@ -47,15 +51,11 @@ const SiginIn = ({ history }) => {
     //  取消監聽
     useEffect(() => {
         if (fetchListener.current) fetchListener.current.unsubscribe();
-        // return () => {
-        //     if (fetchListener.current) {
-        //         fetchListener.current.unsubscribe();
-        //     }
-        // };
     }, []);
 
     return (
         <div className="signin">
+            {/* <span>{title}</span> */}
             <div className="signin_inner">
                 <Form
                     name="normal_login"
