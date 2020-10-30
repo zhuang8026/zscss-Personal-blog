@@ -55,11 +55,12 @@ app.get("/", (req, res) => {
   res.send("hello! welcome to william node.js api.");
 
   // 測試 session
-  // req.session.userName = "Pusheen";
-  // var colorScheme = req.session.colorScheme || "dark";
+  req.session.userName = "Pusheen";
+  var colorScheme = req.session.colorScheme || "dark";
 
-  // console.log(req.session.userName); // Pusheen
-  // console.log(colorScheme); // Dark
+  console.log(req.session); // Pusheen
+  console.log(req.session.userName); // Pusheen
+  console.log(colorScheme); // Dark
 });
 
 // 存储session
@@ -71,6 +72,9 @@ app.use((req, res, next) => {
 
 // products
 app.use("/products", require(__dirname + "/products.js"));
+
+// admin
+app.use("/admin", require(__dirname + "/admin.js"));
 
 // 404
 app.use((req, res) => {

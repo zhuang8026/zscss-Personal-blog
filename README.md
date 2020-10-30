@@ -7,7 +7,7 @@
 - 基礎技術支持: html5(websocket) + sass
 - 前端技術支持: react.js + hooks + javaScript(ES6)
 - 後端技術支持: node.js + express.js + mysql
-- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from)
+- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from) + [js-cookie](https://www.npmjs.com/package/js-cookie)
 - git 技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
@@ -23,6 +23,7 @@
     "prettier": "^2.1.2"
     "axios": "^0.21.0"
     "rxjs": "^6.6.3"
+    "js-cookie": "^2.2.1"
 
 ### `- 功能說明 -`
 <!-- 增加（Create，意为“创建”）、删除（Delete）、查询（Read，意为“读取”）、改正（Update，意为“更新”） -->
