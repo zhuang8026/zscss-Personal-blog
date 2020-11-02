@@ -1,24 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 import Cookies from 'js-cookie';
 
 const NavTop = () => {
-    const [admin, setAdmin] = useState(Cookies.get('admin_scToken'));
-    console.log(admin);
+    const [admin, setAdmin] = useState(JSON.parse(Cookies.get('admin_scToken')));
+    const [isLoggedIn, setIsLoggedIn] = useState();
+
     // const WEDURL = window.location.href;
     const SiginOutCallBack = () => {
         Cookies.remove('admin_scToken', { path: '' });
+        setIsLoggedIn(false);
     };
 
-    useEffect(() => {}, []);
     return (
         <div className="top_nav">
             <ul>
                 <li>
-                    {Cookies.get('admin_scToken') && JSON.parse(Cookies.get('admin_scToken')).state === 200 ? (
+                    {admin && admin.state === 200 ? (
                         <>
-                            <div className="nav_btn btn_left">{JSON.parse(Cookies.get('admin_scToken')).nickname}</div>
+                            <div className="nav_btn btn_left">{admin.nickname}</div>
                             <div
                                 className="nav_btn btn_left btn_out"
                                 onClick={() => {
@@ -43,7 +44,7 @@ const NavTop = () => {
                         </div>
                     )}
 
-                    <div className="nav_btn btn_left">2/人</div>
+                    <div className="nav_btn btn_left">0/人</div>
                 </li>
                 <li>
                     <div className="nav_btn btn_right">新增</div>

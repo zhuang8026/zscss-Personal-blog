@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 
 import NavTop from 'components/pages/Home/NavTop';
 import Header from 'components/pages/Home/L-Header';
@@ -6,10 +6,13 @@ import Averge from 'components/pages/Home/L-Averge';
 import Comments from 'components/pages/Home/L-Comments';
 import Admin from 'components/pages/Home/L-Admin';
 import CardList from 'components/pages/Home/R-CardList';
-
+import { AdminContext } from 'contexts/admin';
 import './style_module.scss';
 
 const Home = () => {
+    const value = useContext(AdminContext);
+    console.log('AdminContext:', AdminContext);
+    console.log('AdminContext:', value);
     return (
         <main>
             <NavTop />
