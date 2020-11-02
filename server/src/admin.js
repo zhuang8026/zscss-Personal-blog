@@ -19,18 +19,42 @@ router.post("/signin", upload.none(), (req, res) => {
   const output = {
     body: req.body,
     state: null,
+    nickname: null,
   };
   const sql = "SELECT * FROM admin WHERE account=? AND password=SHA1(?)";
 
   db.query(sql, [req.body.account, req.body.password]).then(([result]) => {
-    // console.log(result);
-    if (result && result.length) {
+    console.log(result);
+    if (result && result.length > 0) {
       req.session.adminSession = result[0]; // adminSession 这是自己定义的，将result的资料赋值给 admin
-      result[0].state = 200;
+      output.state = 200;
+      output.nickname = result[0].nickname;
     } else {
-      result[0].state = 404;
+      output.state = 404;
     }
-    res.json(result[0]);
+    res.json(output);
+  });
+});
+
+// http://localhost:3009/admin/checkinAccount
+router.post("/checkinAccount", upload.none(), (req, res) => {
+  const output = {
+    body: req.body,
+    state: null,
+    nickname: null,
+  };
+  const sql = "SELECT * FROM admin WHERE account=?";
+  console.log(req.body);
+  db.query(sql, [req.body.account]).then(([result]) => {
+    console.log(result);
+    if (result && result.length > 0) {
+      console.log(result);
+      output.state = 200;
+      output.nickname = result[0].nickname;
+    } else {
+      output.state = 404;
+    }
+    res.json(output);
   });
 });
 

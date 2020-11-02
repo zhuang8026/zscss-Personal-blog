@@ -6,11 +6,11 @@ import Cookies from 'js-cookie';
 
 // API
 import axios from 'axios';
-import { postAdminSignIinAPI } from 'api/admin';
+import { postAdminSignIinAPI, postUserNameCheckInAPI } from 'api/admin';
 
 // antd
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox, notification } from 'antd';
+import { UserOutlined, LockOutlined, FrownOutlined } from '@ant-design/icons';
 
 // Context
 // import { Context as AuthStorage } from 'contexts/Auth';
@@ -19,11 +19,29 @@ import '../style_module.scss';
 
 const SiginIn = ({ history }) => {
     const [username, setUsername] = useState(''); // username
+    const [usernameStatus, setUsernameStatus] = useState(null); // username Status
     const [password, setPassword] = useState(''); // password
+    const [check, setcheck] = useState(false); // checkbox
     const [isLoading, setIsLoading] = useState(false); // 載入
     const fetchListener = useRef(null); // fetch
 
-    // 登入
+    // 確認帳號是否存在
+    const userNameCheckInCallBack = objectValue => {
+        const adminData = {
+            account: objectValue
+        };
+        fetchListener.current = from(axios(postUserNameCheckInAPI(adminData))).subscribe(res => {
+            if (res.status === 200) {
+                if (res.data.state === 200) {
+                    setUsernameStatus(true);
+                } else {
+                    setUsernameStatus(false);
+                }
+            }
+        });
+    };
+
+    // 登入 && API
     const postAdminSignIinAPICallBack = data => {
         setIsLoading(true);
         const signInData = {
@@ -31,21 +49,32 @@ const SiginIn = ({ history }) => {
             password: data.password
         };
         fetchListener.current = from(axios(postAdminSignIinAPI(signInData))).subscribe(res => {
-            // console.log(res);
-            if (res.status == 200) {
-                if ((res.data.state = 200)) {
+            if (res.status === 200) {
+                if (res.data.state === 200) {
                     setTimeout(() => {
                         setIsLoading(false);
                         Cookies.set('adminData', res.data, { expires: 7, path: '' });
                         history.push('/');
                     }, 2000);
+                } else {
+                    setTimeout(() => {
+                        setIsLoading(false);
+                        openNotification();
+                    }, 2000);
                 }
+            } else {
+                setIsLoading(false);
             }
         });
     };
 
-    const onFinish = values => {
-        postAdminSignIinAPICallBack(values);
+    // 錯誤訊息
+    const openNotification = () => {
+        notification.open({
+            message: '404 Error',
+            description: 'The account or password is incorrect. Are you sure you are the administrator ?',
+            icon: <FrownOutlined style={{ color: 'red' }} />
+        });
     };
 
     //  取消監聽
@@ -63,34 +92,51 @@ const SiginIn = ({ history }) => {
                     initialValues={{
                         remember: true
                     }}
-                    onFinish={onFinish}
+                    onFinish={values => {
+                        postAdminSignIinAPICallBack(values);
+                    }}
                 >
                     <Form.Item
                         name="username"
                         hasFeedback
-                        // validateStatus="error" // success warning error
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your Username!'
-                            }
-                        ]}
+                        validateStatus={usernameStatus === null ? '' : usernameStatus === true ? 'success' : 'error'} // success warning error
+                        help={
+                            usernameStatus === null
+                                ? ' '
+                                : usernameStatus === true
+                                ? 'ok'
+                                : 'This account is not registered'
+                        }
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Please input your Username!'
+                        //     }
+                        // ]}
                         getValueProps={e => {
                             setUsername(e !== undefined ? e : '');
                         }}
                     >
-                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                        <Input
+                            prefix={<UserOutlined className="site-form-item-icon" />}
+                            placeholder="Username"
+                            onChange={e => {
+                                e.persist();
+                                userNameCheckInCallBack(e.target.value);
+                            }}
+                        />
                     </Form.Item>
                     <Form.Item
                         name="password"
                         hasFeedback
-                        // validateStatus="error" // success warning error
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your Password!'
-                            }
-                        ]}
+                        validateStatus={password.length >= 6 ? 'success' : password.length == 0 ? '' : 'error'} // success warning error
+                        help={password.length == 0 ? ' ' : password.length >= 6 ? 'ok' : 'password length max >= 6'}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Please input your Password!'
+                        //     }
+                        // ]}
                         getValueProps={e => {
                             setPassword(e !== undefined ? e : '');
                         }}
@@ -99,16 +145,23 @@ const SiginIn = ({ history }) => {
                             prefix={<LockOutlined className="site-form-item-icon" />}
                             type="password"
                             placeholder="Password"
+                            maxLength={10}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Form.Item name="remember" valuePropName="checked" noStyle>
-                            <Checkbox>Remember me</Checkbox>
+                        <Form.Item name="remember" noStyle>
+                            <Checkbox
+                                onChange={e => {
+                                    setcheck(e.target.checked);
+                                }}
+                            >
+                                I agree to the Term of Use and Privacy Policy.
+                            </Checkbox>
                         </Form.Item>
 
-                        <a className="login-form-forgot" href="#">
+                        {/* <a className="login-form-forgot" href="#">
                             Forgot password
-                        </a>
+                        </a> */}
                     </Form.Item>
 
                     <Form.Item>
@@ -116,7 +169,7 @@ const SiginIn = ({ history }) => {
                             type="primary"
                             htmlType="submit"
                             className="login-form-button"
-                            disabled={username !== '' && password !== '' ? false : true}
+                            disabled={username !== '' && password !== '' && check && usernameStatus ? false : true}
                             loading={isLoading}
                         >
                             Login

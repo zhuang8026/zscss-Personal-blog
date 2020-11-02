@@ -18648,7 +18648,7 @@ textarea.ant-input {
 .ant-form-item-has-warning .ant-input-affix-wrapper,
 .ant-form-item-has-warning .ant-input:hover,
 .ant-form-item-has-warning .ant-input-affix-wrapper:hover {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-color: #faad14;
 }
 .ant-form-item-has-warning .ant-input:focus,
@@ -18736,7 +18736,7 @@ textarea.ant-input {
 .ant-form-item-has-error .ant-input-affix-wrapper,
 .ant-form-item-has-error .ant-input:hover,
 .ant-form-item-has-error .ant-input-affix-wrapper:hover {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-color: #ff4d4f;
 }
 .ant-form-item-has-error .ant-input:focus,
@@ -27569,6 +27569,5 @@ div.ant-typography-edit-content.ant-typography-rtl {
 .ant-upload-list-rtl.ant-upload-list-picture-card .ant-upload-list-item-info {
   padding: 0;
 }
-
 
 /*# sourceMappingURL=antd.css.map*/
