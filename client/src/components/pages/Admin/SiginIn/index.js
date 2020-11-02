@@ -53,7 +53,7 @@ const SiginIn = ({ history }) => {
                 if (res.data.state === 200) {
                     setTimeout(() => {
                         setIsLoading(false);
-                        Cookies.set('adminData', res.data, { expires: 7, path: '' });
+                        Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
                         history.push('/');
                     }, 2000);
                 } else {

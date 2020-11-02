@@ -4,12 +4,11 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const NavTop = () => {
-    const [admin, setAdmin] = useState(Cookies.get('adminData'));
-
-
+    const [admin, setAdmin] = useState(Cookies.get('admin_scToken'));
+    console.log(admin);
     // const WEDURL = window.location.href;
     const SiginOutCallBack = () => {
-        Cookies.remove('adminData', { path: '' });
+        Cookies.remove('admin_scToken', { path: '' });
     };
 
     useEffect(() => {}, []);
@@ -17,16 +16,20 @@ const NavTop = () => {
         <div className="top_nav">
             <ul>
                 <li>
-                    <div className="nav_btn btn_left">
-                        {Cookies.get('adminData') && JSON.parse(Cookies.get('adminData')).state === 200 ? (
-                            <h1
+                    {Cookies.get('admin_scToken') && JSON.parse(Cookies.get('admin_scToken')).state === 200 ? (
+                        <>
+                            <div className="nav_btn btn_left">{JSON.parse(Cookies.get('admin_scToken')).nickname}</div>
+                            <div
+                                className="nav_btn btn_left btn_out"
                                 onClick={() => {
                                     SiginOutCallBack();
                                 }}
                             >
-                                {JSON.parse(Cookies.get('adminData')).nickname}
-                            </h1>
-                        ) : (
+                                登出
+                            </div>
+                        </>
+                    ) : (
+                        <div className="nav_btn btn_left">
                             <Link
                                 to={{
                                     pathname: '/admin/sign-in'
@@ -37,8 +40,9 @@ const NavTop = () => {
                             >
                                 Admin
                             </Link>
-                        )}
-                    </div>
+                        </div>
+                    )}
+
                     <div className="nav_btn btn_left">2/人</div>
                 </li>
                 <li>

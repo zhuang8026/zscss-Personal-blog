@@ -49,6 +49,15 @@ main {
                     height: 36px;
                     line-height: 36px;
                     text-align: center;
+                    cursor: pointer;
+                }
+
+                .btn_out {
+                    transition: 0.3s;
+                    &:hover {
+                        background-size: 200% 200%;
+                        background: linear-gradient(90deg, #0073e6, #0ca);
+                    }
                 }
             }
         }
