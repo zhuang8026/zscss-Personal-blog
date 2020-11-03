@@ -53,7 +53,7 @@ const AdminContainer = props => {
                     isAdmins.push({ loginState: true, all: JSON.parse(Cookies.get('admin_scToken')) });
                     setAdminData(isAdmins);
                 } else {
-                    console.log('300 error');
+                    console.log('sign out again');
                 }
             }
         });

@@ -1,4 +1,4 @@
-// admin sign-in s001
+// admin sign-in s001 | admin登入 | signin 使用
 export const postAdminSignIinAPI = data => {
     // console.log(data);
     return {
@@ -11,7 +11,7 @@ export const postAdminSignIinAPI = data => {
     };
 };
 
-// ckeck in admin s002
+// ckeck in admin s002 | 確認是否有帳號 | signin 使用
 export const postUserNameCheckInAPI = data => {
     // console.log(data);
     return {
@@ -21,5 +21,17 @@ export const postUserNameCheckInAPI = data => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         data: data
+    };
+};
+
+// ckeck in admin s002 | 確認是否有帳號 | signin 使用
+export const getAllAdminAPI = () => {
+    // console.log(data);
+    return {
+        method: 'GET',
+        baseURL: 'http://localhost:3009',
+        url: `admin/allAdmin`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
     };
 };

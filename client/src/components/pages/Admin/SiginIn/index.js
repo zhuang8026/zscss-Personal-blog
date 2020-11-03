@@ -131,8 +131,8 @@ const SiginIn = ({ history }) => {
                     <Form.Item
                         name="password"
                         hasFeedback
-                        validateStatus={password.length >= 6 ? 'success' : password.length == 0 ? '' : 'error'} // success warning error
-                        help={password.length == 0 ? ' ' : password.length >= 6 ? 'ok' : 'password length max >= 6'}
+                        validateStatus={password.length >= 5 ? 'success' : password.length == 0 ? '' : 'error'} // success warning error
+                        help={password.length == 0 ? ' ' : password.length >= 5 ? 'ok' : 'password length max >= 6'}
                         // rules={[
                         //     {
                         //         required: true,
