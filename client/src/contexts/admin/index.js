@@ -33,11 +33,8 @@ const AdminContainer = props => {
             password: adminData[0].all.body.password
         };
         fetchListener.current = from(axios(postAdminSignOutAPI(data))).subscribe(res => {
-            console.log(res);
             if (res.status === 200) {
                 console.log('sign out ok');
-            } else {
-                console.log('sign out again');
             }
         });
         if (isLoggedIn) {

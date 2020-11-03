@@ -29,7 +29,7 @@ const Admin = () => {
 
     useEffect(() => {
         getAllAdminAPICallBack();
-    });
+    }, [adminData]);
 
     return (
         <div className="rating_card Admin">

@@ -50,16 +50,13 @@ router.post("/signin", upload.none(), (req, res) => {
 // admin登出 | signOut 使用
 // http://localhost:3009/admin/signOut
 router.post("/signOut", upload.none(), (req, res) => {
-  console.log(req.body);
   const output = {
     loginStatus: "",
     message: "",
   };
   const sql = "UPDATE `admin` SET `loginStatus`=? WHERE `account`=?";
   db.query(sql, [0, req.body.account]).then(([results]) => {
-    console.log(results);
     if (results.affectedRows && results.changedRows) {
-      console.log("signOut ok");
       output.loginStatus = false;
       output.message = "sign out ok";
       res.json(output);

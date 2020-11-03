@@ -24,8 +24,8 @@ const SiginIn = ({ history }) => {
     const [check, setcheck] = useState(false); // checkbox
     const [isLoading, setIsLoading] = useState(false); // 載入
     const fetchListener = useRef(null); // fetch
-    const { setLoggedInMember } = useContext(AdminContext);
-
+    const { adminData, setLoggedInMember } = useContext(AdminContext);
+    console.log(adminData);
     // 確認帳號是否存在
     const userNameCheckInCallBack = objectValue => {
         const adminData = {
@@ -84,6 +84,13 @@ const SiginIn = ({ history }) => {
     useEffect(() => {
         if (fetchListener.current) fetchListener.current.unsubscribe();
     }, []);
+
+    //  取消監聽
+    useEffect(() => {
+        if (adminData.length > 0 && adminData[0].all.loginStatus) {
+            history.replace('/');
+        }
+    }, [adminData]);
 
     return (
         <div className="signin">

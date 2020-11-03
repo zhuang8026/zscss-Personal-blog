@@ -19,12 +19,3 @@ export const ratingAllAPI = method => {
         'Content-Type': 'application/json'
     };
 };
-
-// account214, previously member010
-// export const productsPagesAPI = data =>
-//     request('GET', `http://localhost:3009/products/pages/${data}`, {
-//         headers: {
-//             Accept: 'application/json',
-//             'Content-Type': 'application/json'
-//         }
-//     });
