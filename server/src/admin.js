@@ -20,15 +20,17 @@ router.post("/signin", upload.none(), (req, res) => {
     body: req.body,
     state: null,
     nickname: null,
+    userimg: null,
   };
   const sql = "SELECT * FROM admin WHERE account=? AND password=SHA1(?)";
 
   db.query(sql, [req.body.account, req.body.password]).then(([result]) => {
     console.log(result);
     if (result && result.length > 0) {
-      req.session.adminSession = result[0]; // adminSession 这是自己定义的，将result的资料赋值给 admin
+      // req.session.adminSession = result[0]; // adminSession 这是自己定义的，将result的资料赋值给 admin
       output.state = 200;
       output.nickname = result[0].nickname;
+      output.userimg = result[0].userimg;
     } else {
       output.state = 404;
     }

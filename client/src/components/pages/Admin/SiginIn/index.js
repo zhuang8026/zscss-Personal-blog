@@ -13,7 +13,7 @@ import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { UserOutlined, LockOutlined, FrownOutlined } from '@ant-design/icons';
 
 // Context
-// import { Context as AuthStorage } from 'contexts/Auth';
+import { AdminContext } from 'contexts/admin';
 
 import '../style_module.scss';
 
@@ -24,6 +24,7 @@ const SiginIn = ({ history }) => {
     const [check, setcheck] = useState(false); // checkbox
     const [isLoading, setIsLoading] = useState(false); // 載入
     const fetchListener = useRef(null); // fetch
+    const { setLoggedInMember } = useContext(AdminContext);
 
     // 確認帳號是否存在
     const userNameCheckInCallBack = objectValue => {
@@ -53,8 +54,9 @@ const SiginIn = ({ history }) => {
                 if (res.data.state === 200) {
                     setTimeout(() => {
                         setIsLoading(false);
-                        Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
+                        setLoggedInMember(res);
                         history.push('/');
+                        // Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
                     }, 2000);
                 } else {
                     setTimeout(() => {

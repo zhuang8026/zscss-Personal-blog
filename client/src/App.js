@@ -1,10 +1,12 @@
-import React, { Fragment, Suspense, useState, useEffect } from 'react';
+import React, { Fragment, Suspense, useState, useEffect, useContext } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 // DesignSystem
 import NavLeft from 'components/DesignSystem/NavLeft';
 import NoMatch from 'components/DesignSystem/NoMatch';
 import Footer from 'components/DesignSystem/Footer';
+
+import AdminContainer from 'contexts/admin';
 
 // config
 import routes from 'config/routes';
@@ -15,7 +17,6 @@ import 'scss/antd.css';
 
 function App({ match, location }) {
     const [layouts, setLayouts] = useState([]);
-
     // all route
     const Routes = routes.map((route, key) => (
         <Route
@@ -55,7 +56,7 @@ function App({ match, location }) {
 
                 <Suspense fallback={<></>}>
                     <Switch>
-                        {Routes}
+                        <AdminContainer>{Routes}</AdminContainer>
                         <Route component={NoMatch} />
                     </Switch>
                 </Suspense>
