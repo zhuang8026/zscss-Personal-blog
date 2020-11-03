@@ -50,6 +50,7 @@ const SiginIn = ({ history }) => {
             password: data.password
         };
         fetchListener.current = from(axios(postAdminSignIinAPI(signInData))).subscribe(res => {
+            // console.log('postAdminSignIinAPI:', res);
             if (res.status === 200) {
                 if (res.data.state === 200) {
                     setTimeout(() => {

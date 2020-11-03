@@ -19,7 +19,7 @@ const NavTop = () => {
         <div className="top_nav">
             <ul>
                 <li>
-                    {adminData.length > 0 && adminData[0].loginState ? (
+                    {adminData.length > 0 && adminData[0].all.loginStatus ? (
                         <>
                             <div className="nav_btn btn_left">{adminData[0].all.nickname}</div>
                             <div

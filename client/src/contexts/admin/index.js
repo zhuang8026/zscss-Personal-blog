@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 
 // API
 import axios from 'axios';
-import { postAdminSignIinAPI } from 'api/admin';
+import { postAdminSignIinAPI, postAdminSignOutAPI } from 'api/admin';
 
 export const AdminContext = createContext();
 
@@ -16,24 +16,36 @@ const AdminContainer = props => {
     const [adminData, setAdminData] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const fetchListener = useRef(null); // fetch
+
     // 登入
     const setLoggedInMember = res => {
         setIsLoggedIn(true);
         Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
         const isAdmin = [];
-        isAdmin.push({ loginState: true, all: JSON.parse(Cookies.get('admin_scToken')) });
+        isAdmin.push({ all: JSON.parse(Cookies.get('admin_scToken')) });
         setAdminData(isAdmin);
     };
 
     // 登出
     const unsetLoggedInMember = () => {
+        const data = {
+            account: adminData[0].all.body.account,
+            password: adminData[0].all.body.password
+        };
+        fetchListener.current = from(axios(postAdminSignOutAPI(data))).subscribe(res => {
+            console.log(res);
+            if (res.status === 200) {
+                console.log('sign out ok');
+            } else {
+                console.log('sign out again');
+            }
+        });
         if (isLoggedIn) {
             history.push(location.pathname.split('/').slice(0, 3).join('/'));
         }
         setIsLoggedIn(false);
         Cookies.remove('admin_scToken', { path: '' });
         const isAdmin = {
-            loginState: false,
             body: null
         };
         setAdminData(isAdmin);
@@ -50,7 +62,7 @@ const AdminContainer = props => {
             if (res.status === 200) {
                 if (res.data.state === 200) {
                     const isAdmins = new Array();
-                    isAdmins.push({ loginState: true, all: JSON.parse(Cookies.get('admin_scToken')) });
+                    isAdmins.push({ all: JSON.parse(Cookies.get('admin_scToken')) });
                     setAdminData(isAdmins);
                 } else {
                     console.log('sign out again');

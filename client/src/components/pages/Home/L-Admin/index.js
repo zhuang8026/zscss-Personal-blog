@@ -19,7 +19,6 @@ const Admin = () => {
     // admin list API (get)
     const getAllAdminAPICallBack = data => {
         fetchListener.current = from(axios(getAllAdminAPI())).subscribe(res => {
-            // console.log(res.data);
             if (res.status === 200) {
                 setList(res.data);
             } else {
@@ -28,24 +27,9 @@ const Admin = () => {
         });
     };
 
-    // const adminStateCallBack = adminAccount => {
-    //     console.log(adminAccount);
-    //     adminData.map((data, index) => {
-    //         console.log(data);
-    //         if (data.all.body.account == adminAccount) {
-    //             console.log('1');
-    //             return <div className={`admin_online admin_state`} />;
-    //         } else {
-    //             console.log('2');
-    //             return <div className={`admin_online`} />;
-    //         }
-    //     });
-    // };
-
     useEffect(() => {
         getAllAdminAPICallBack();
-        // adminStateCallBack();
-    }, []);
+    });
 
     return (
         <div className="rating_card Admin">
@@ -53,7 +37,7 @@ const Admin = () => {
             <ul className="card_admin">
                 {list.map((data, index) => {
                     return (
-                        <li>
+                        <li key={index}>
                             <div className="rating_admin_img">
                                 <div className="figure_icon">
                                     <img
@@ -62,8 +46,7 @@ const Admin = () => {
                                     />
                                 </div>
                                 <p>{data.nickname}</p>
-                                {/* {adminStateCallBack(data.account)} */}
-                                <div className={`admin_online admin_state`} />
+                                <div className={`admin_online ${data.loginStatus ? 'admin_state' : ''}`} />
                             </div>
                             <div className="rating_admin_icon">
                                 <CommentOutlined className="icon-20" />
