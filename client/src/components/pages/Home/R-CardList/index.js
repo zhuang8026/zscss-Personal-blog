@@ -23,7 +23,7 @@ const CardList = () => {
     const { Option } = Select;
 
     const handleChange = value => {
-        console.log(`selected: ${value}`);
+        // console.log(`selected: ${value}`);
         setIsStar(value);
         setIsPage(1);
     };
@@ -87,7 +87,10 @@ const CardList = () => {
             </div>
             {/* 數量 */}
             <div className="rating_r_Showing">
-                <p>Showing 1-10 of 100 items</p>
+                <p>
+                    Showing {isData.rows ? 1 : 0}-{isData.rows ? isData.rows.length : 0} of{' '}
+                    {isData.rows ? isData.totalRows : 0} items
+                </p>
             </div>
             {/* 內容 */}
             <div className="rating_list_inner">

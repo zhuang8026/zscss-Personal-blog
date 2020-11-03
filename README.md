@@ -26,7 +26,9 @@
     "js-cookie": "^2.2.1"
 
 ### `- 功能說明 -`
+
 <!-- 增加（Create，意为“创建”）、删除（Delete）、查询（Read，意为“读取”）、改正（Update，意为“更新”） -->
+
 - 星星評分分析 (R)
 - admin 系統 (CRUD)
 
@@ -34,11 +36,12 @@
 
 - Version - v1.1
   - 20201021 - v1.1.1 - 開始製作
-  - 20201022 - v1.1.2 - UI 介面完成
+    - 20201022 - v1.1.2 - UI 介面完成
     - 20201023 - v1.1.2 - loading 效果完成
-  - 20201024 - v1.1.3 - node 環境架設 / server
+    - 20201024 - v1.1.3 - node 環境架設 / server
     - 20201025 - v1.1.3 - 安裝前端套件 (axios + swiper)
     - 20201026 - v1.1.3 - 安裝後端套件 (cors + moment-timezone + mysql2 + multer + cookie-parser)
-  - 20201027 - v1.1.4 - client端 與 server端 連接
+    - 20201027 - v1.1.4 - client 端 與 server 端 連接
     - 20201028 - v1.1.4 - filter 星星評分完成
-    - 20201029 - v1.1.4 - admin登入開始製作
+    - 20201029 - v1.1.4 - admin 登入開始製作
+  - 20201103 - v1.1.5 - admin 完成 && Card List 完成

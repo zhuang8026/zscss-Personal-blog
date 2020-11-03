@@ -8,6 +8,10 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { postAdminSignIinAPI, postAdminSignOutAPI } from 'api/admin';
 
+// antd
+import { notification } from 'antd';
+import { SmileTwoTone } from '@ant-design/icons';
+
 export const AdminContext = createContext();
 
 const AdminContainer = props => {
@@ -20,7 +24,7 @@ const AdminContainer = props => {
     // 登入
     const setLoggedInMember = res => {
         setIsLoggedIn(true);
-        Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
+        Cookies.set('admin_scToken', res.data, { expires: 1, path: '' });
         const isAdmin = [];
         isAdmin.push({ all: JSON.parse(Cookies.get('admin_scToken')) });
         setAdminData(isAdmin);
@@ -35,17 +39,24 @@ const AdminContainer = props => {
         fetchListener.current = from(axios(postAdminSignOutAPI(data))).subscribe(res => {
             if (res.status === 200) {
                 console.log('sign out ok');
+                openNotification();
+                setIsLoggedIn(false);
+                Cookies.remove('admin_scToken', { path: '' });
+                const isAdmin = {
+                    body: null
+                };
+                setAdminData(isAdmin);
             }
         });
-        if (isLoggedIn) {
-            history.push(location.pathname.split('/').slice(0, 3).join('/'));
-        }
-        setIsLoggedIn(false);
-        Cookies.remove('admin_scToken', { path: '' });
-        const isAdmin = {
-            body: null
-        };
-        setAdminData(isAdmin);
+    };
+
+    // 錯誤訊息
+    const openNotification = () => {
+        notification.open({
+            message: 'SUCCESS ! BYE~',
+            description: 'Admin sign out success.',
+            icon: <SmileTwoTone style={{ color: 'yellow' }} />
+        });
     };
 
     // 登入監控
