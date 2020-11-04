@@ -14,12 +14,13 @@ import { Select } from 'antd';
 import { Pagination } from 'antd';
 import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
 
-const CardList = () => {
+const CardList = ({ history }) => {
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isPage, setIsPage] = useState(1); // 頁碼
     const [isStar, setIsStar] = useState(0); // rating 數量
     const [isData, setIsData] = useState({}); // 此頁資料
     const fetchListener = useRef(null); // fetch
+    const btnElement = useRef(null);
     const { Option } = Select;
 
     const handleChange = value => {
@@ -50,11 +51,14 @@ const CardList = () => {
 
     //  取消監聽
     useEffect(() => {
-        // return () => {
-        //     if (fetchListener.current) {
-        //         fetchListener.current.unsubscribe();
-        //     }
-        // };
+        document.addEventListener('click', e => {
+            console.log(e.target);
+        });
+        if (btnElement.current) {
+            btnElement.current.addEventListener('click', e => {
+                console.log(e.target);
+            });
+        }
     }, []);
 
     // 商品數量
@@ -106,7 +110,17 @@ const CardList = () => {
                     <>
                         {isData.rows.map((data, index) => {
                             return (
-                                <div className="r_list" key={index}>
+                                <div
+                                    className="r_list"
+                                    key={index}
+                                    id={data.itemId}
+                                    ref={btnElement}
+                                    // onClick={e => {
+                                    //     e.nativeEvent.stopImmediatePropagation();
+                                    //     console.log(e.target);
+                                    //     history.push(`/pen-detail/${e.target.id}`);
+                                    // }}
+                                >
                                     <div className="r_list_card">
                                         <div className="r_list_title">
                                             <div className="r_list_title_left">
@@ -156,4 +170,4 @@ const CardList = () => {
     );
 };
 
-export default CardList;
+export default withRouter(CardList);

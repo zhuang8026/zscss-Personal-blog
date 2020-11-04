@@ -1,7 +1,6 @@
 import React, { lazy } from 'react';
 
 const Home = lazy(() => import('components/pages/Home'));
-// const pen = lazy(() => import('components/pages/pen'));
 const penDetail = lazy(() => import('components/pages/penDetail'));
 
 //admin
@@ -35,7 +34,7 @@ const routes = [
         component: penDetail,
         exact: true,
         authRequired: false,
-        layouts: ['NavLeft', 'Footer']
+        layouts: ['NavLeft']
     }
 ];
 

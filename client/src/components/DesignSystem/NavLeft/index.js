@@ -8,8 +8,10 @@ const NavLeft = () => {
         <nav>
             <ul>
                 <li>
-                    <span>come soon</span>
-                    <img src={require(`images/Home/zscss.png`)} alt="home" />
+                    <Link to={'/'}>
+                        <span>come soon</span>
+                        <img src={require(`images/Home/zscss.png`)} alt="home" />
+                    </Link>
                 </li>
                 <li>
                     <span>come soon</span>
