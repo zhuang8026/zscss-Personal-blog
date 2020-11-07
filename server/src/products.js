@@ -75,8 +75,8 @@ const getDataList = async (req) => {
 
   output.rows = r2;
   for (let i of r2) {
-    i.created_at = moment(i.created_at).format("YYYY/MM/DD, HH:mm");
-    i.updated_at = moment(i.updated_at).format("YYYY/MM/DD, HH:mm");
+    i.created_at = moment(i.created_at).format("YYYY/MM/DD HH:mm:ss");
+    i.updated_at = moment(i.updated_at).format("YYYY/MM/DD HH:mm:ss");
   }
 
   return output;

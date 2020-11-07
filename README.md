@@ -7,7 +7,7 @@
 - 基礎技術支持: html5(websocket) + sass
 - 前端技術支持: react.js + hooks + javaScript(ES6)
 - 後端技術支持: node.js + express.js + mysql
-- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from) + [js-cookie](https://www.npmjs.com/package/js-cookie)
+- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from) + [js-cookie](https://www.npmjs.com/package/js-cookie) + [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer)
 - git 技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
@@ -24,6 +24,7 @@
     "axios": "^0.21.0"
     "rxjs": "^6.6.3"
     "js-cookie": "^2.2.1"
+    "prism-react-renderer": "^1.1.1"
 
 ### `- 功能說明 -`
 
@@ -45,3 +46,5 @@
     - 20201028 - v1.1.4 - filter 星星評分完成
     - 20201029 - v1.1.4 - admin 登入開始製作
   - 20201103 - v1.1.5 - admin 完成 && Card List 完成
+    - 20201107 - v1.1.6 - detail 完成
+    - 20201107 - v1.1.7 - json-server 測試, 將大量資料以 json 各式傳入 DB

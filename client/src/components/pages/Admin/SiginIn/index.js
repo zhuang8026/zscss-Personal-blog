@@ -82,7 +82,9 @@ const SiginIn = ({ history }) => {
 
     //  取消監聽
     useEffect(() => {
-        if (fetchListener.current) fetchListener.current.unsubscribe();
+        return () => {
+            if (fetchListener.current) fetchListener.current.unsubscribe();
+        };
     }, []);
 
     //  取消監聽

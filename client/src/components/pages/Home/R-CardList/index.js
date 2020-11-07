@@ -49,18 +49,6 @@ const CardList = ({ history }) => {
             });
     };
 
-    //  取消監聽
-    useEffect(() => {
-        document.addEventListener('click', e => {
-            console.log(e.target);
-        });
-        if (btnElement.current) {
-            btnElement.current.addEventListener('click', e => {
-                console.log(e.target);
-            });
-        }
-    }, []);
-
     // 商品數量
     useEffect(() => {
         productsPagesAPICallBack();
@@ -110,17 +98,14 @@ const CardList = ({ history }) => {
                     <>
                         {isData.rows.map((data, index) => {
                             return (
-                                <div
-                                    className="r_list"
-                                    key={index}
-                                    id={data.itemId}
-                                    ref={btnElement}
-                                    // onClick={e => {
-                                    //     e.nativeEvent.stopImmediatePropagation();
-                                    //     console.log(e.target);
-                                    //     history.push(`/pen-detail/${e.target.id}`);
-                                    // }}
-                                >
+                                <div className="r_list" key={index} ref={btnElement}>
+                                    <div
+                                        className="r_list_hover"
+                                        id={data.itemId}
+                                        onClick={e => {
+                                            history.push(`/pen-detail/${e.target.id}`);
+                                        }}
+                                    />
                                     <div className="r_list_card">
                                         <div className="r_list_title">
                                             <div className="r_list_title_left">
