@@ -1,6 +1,6 @@
-## 經驗分享平台
+## EXPERIENCE SHARING PLATFORM
 
-主要是在分享 react 和 vue 的學習經歷，當然也有可能會添加一些其他的生活瑣碎的事情。
+I am mainly sharing the learning experience of react and vue. Of course, there may be other trivial things in life.
 
 ### `- 技術支持 -`
 
