@@ -24,7 +24,7 @@ const AdminContainer = props => {
     // 登入
     const setLoggedInMember = res => {
         setIsLoggedIn(true);
-        Cookies.set('admin_scToken', res.data, { expires: 1, path: '' });
+        Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
         const isAdmin = [];
         isAdmin.push({ all: JSON.parse(Cookies.get('admin_scToken')) });
         setAdminData(isAdmin);
@@ -81,6 +81,13 @@ const AdminContainer = props => {
 
     useEffect(() => {
         ListenAdminSignIn();
+    }, []);
+
+    useEffect(() => {
+        if (Cookies.get('admin_scToken') === 'undefined') {
+            console.log('111');
+            unsetLoggedInMember();
+        }
     }, []);
 
     return (

@@ -4,6 +4,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
+/.github
 /client/node_modules
 /client/package-lock.json
 /client/build

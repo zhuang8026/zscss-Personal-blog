@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import posed from 'react-pose';
 
 // API
 import axios from 'axios';
@@ -14,11 +15,17 @@ import { Select } from 'antd';
 import { Pagination } from 'antd';
 import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
 
+const ItemAnimated = posed.div({
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+});
+
 const CardList = ({ history }) => {
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isPage, setIsPage] = useState(1); // 頁碼
     const [isStar, setIsStar] = useState(0); // rating 數量
     const [isData, setIsData] = useState({}); // 此頁資料
+    const [contentLoad, setContentLoad] = useState(false); // 動畫控制
     const fetchListener = useRef(null); // fetch
     const btnElement = useRef(null);
     const { Option } = Select;
@@ -42,12 +49,18 @@ const CardList = ({ history }) => {
                 setTimeout(() => {
                     setIsLoading(false);
                     setIsData(result.data);
-                }, 1000);
+                }, 500);
             })
             .catch(err => {
                 console.error(err);
             });
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setContentLoad(true);
+        }, 700);
+    }, []);
 
     // 商品數量
     useEffect(() => {
@@ -98,43 +111,48 @@ const CardList = ({ history }) => {
                     <>
                         {isData.rows.map((data, index) => {
                             return (
-                                <div className="r_list" key={index} ref={btnElement}>
-                                    <div
-                                        className="r_list_hover"
-                                        id={data.itemId}
-                                        onClick={e => {
-                                            history.push(`/pen-detail/${e.target.id}`);
-                                        }}
-                                    />
-                                    <div className="r_list_card">
-                                        <div className="r_list_title">
-                                            <div className="r_list_title_left">
-                                                <div className="r_list_head">
-                                                    <div className="figure_icon">
-                                                        <img src={require(`images/Home/${data.itemImg}`)} alt="頭像" />
+                                <ItemAnimated pose={contentLoad ? 'visible' : 'hidden'}>
+                                    <div className="r_list" key={index} ref={btnElement}>
+                                        <div
+                                            className="r_list_hover"
+                                            id={data.itemId}
+                                            onClick={e => {
+                                                history.push(`/pen-detail/${e.target.id}`);
+                                            }}
+                                        />
+                                        <div className="r_list_card">
+                                            <div className="r_list_title">
+                                                <div className="r_list_title_left">
+                                                    <div className="r_list_head">
+                                                        <div className="figure_icon">
+                                                            <img
+                                                                src={require(`images/Home/${data.itemImg}`)}
+                                                                alt="頭像"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="r_list_content">
+                                                        <h2 className="right_list_title"> {data.itemName} </h2>
+                                                        <p>{data.updated_at}</p>
                                                     </div>
                                                 </div>
-                                                <div className="r_list_content">
-                                                    <h2 className="right_list_title"> {data.itemName} </h2>
-                                                    <p>{data.updated_at}</p>
+                                                <div className="r_list_title_right">
+                                                    <CloudUploadOutlined className="icon-20" />
                                                 </div>
                                             </div>
-                                            <div className="r_list_title_right">
-                                                <CloudUploadOutlined className="icon-20" />
+                                            <div className="r_list_bottom">
+                                                <div className="r_list_star">
+                                                    <Rate disabled allowHalf defaultValue={data.itemStar} />
+                                                </div>
+                                                <div className="r_list_tag">
+                                                    <span>#太棒了</span>
+                                                    <span>#非常有幫助</span>
+                                                </div>
+                                                <div className="r_list_tag_content">{data.itemsText}</div>
                                             </div>
-                                        </div>
-                                        <div className="r_list_bottom">
-                                            <div className="r_list_star">
-                                                <Rate disabled allowHalf defaultValue={data.itemStar} />
-                                            </div>
-                                            <div className="r_list_tag">
-                                                <span>#太棒了</span>
-                                                <span>#非常有幫助</span>
-                                            </div>
-                                            <div className="r_list_tag_content">{data.itemsText}</div>
                                         </div>
                                     </div>
-                                </div>
+                                </ItemAnimated>
                             );
                         })}
                         <Pagination

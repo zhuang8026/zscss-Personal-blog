@@ -82,7 +82,7 @@ const CardList = ({ history }) => {
 
     return (
         <div className="rating_r_list_all">
-            <div className="rating_r_list">
+            <div className="rating_r_list_d">
                 {isLoading &&
                     isData.map((data, index) => {
                         return (

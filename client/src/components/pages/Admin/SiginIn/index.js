@@ -25,7 +25,7 @@ const SiginIn = ({ history }) => {
     const [isLoading, setIsLoading] = useState(false); // 載入
     const fetchListener = useRef(null); // fetch
     const { adminData, setLoggedInMember } = useContext(AdminContext);
-    console.log(adminData);
+    // console.log(adminData);
     // 確認帳號是否存在
     const userNameCheckInCallBack = objectValue => {
         const adminData = {
