@@ -30,7 +30,7 @@ const routes = [
         layouts: ['']
     },
     {
-        path: '/pen-detail/:id?',
+        path: '/pen-detail/:id',
         component: penDetail,
         exact: true,
         authRequired: false,

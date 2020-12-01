@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 // API
 import axios from 'axios';
 import { postAdminSignIinAPI, postAdminSignOutAPI } from 'api/admin';
+import { detailPenAPI } from 'api/products';
 
 // antd
 import { notification } from 'antd';
@@ -15,10 +16,12 @@ import { SmileTwoTone } from '@ant-design/icons';
 export const AdminContext = createContext();
 
 const AdminContainer = props => {
-    const { history, location } = props;
+    const { history, location, match } = props;
     // const [admin, setAdmin] = useState(JSON.parse(Cookies.get('admin_scToken')));
     const [adminData, setAdminData] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [detailData, setDetailData] = useState({}); // 此頁資料
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // 載入專用
+    const [isLoading, setIsLoading] = useState(false); // 登入專用
     const fetchListener = useRef(null); // fetch
 
     // 登入
@@ -79,6 +82,20 @@ const AdminContainer = props => {
         });
     };
 
+    // 細節頁面資料
+    const detailPenAPIHandle = dataId => {
+        setIsLoading(true);
+        fetchListener.current = axios(detailPenAPI('GET', dataId))
+            .then(res => {
+                // console.log(res);
+                setIsLoading(false);
+                setDetailData(res.data.results);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
     useEffect(() => {
         ListenAdminSignIn();
     }, []);
@@ -93,9 +110,15 @@ const AdminContainer = props => {
     return (
         <AdminContext.Provider
             value={{
+                isLoading,
+                isLoggedIn,
+                // --- 管理者 ---
                 adminData,
                 setLoggedInMember,
-                unsetLoggedInMember
+                unsetLoggedInMember,
+                // --- 細節頁 ---
+                detailData,
+                detailPenAPIHandle
             }}
         >
             {props.children}

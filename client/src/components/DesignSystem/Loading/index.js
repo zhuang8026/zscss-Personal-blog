@@ -5,7 +5,9 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import { Rate } from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 
-const Loading = () => {
+import './style_module.scss';
+
+const LoadingV2 = () => {
     return (
         <div className="r_list">
             <div className="r_list_card">
@@ -45,4 +47,4 @@ const Loading = () => {
     );
 };
 
-export default Loading;
+export default LoadingV2;

@@ -21,11 +21,11 @@ const ItemAnimated = posed.div({
 });
 
 const CardList = ({ history }) => {
+    const [contentLoad, setContentLoad] = useState(false); // 動畫控制
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isPage, setIsPage] = useState(1); // 頁碼
     const [isStar, setIsStar] = useState(0); // rating 數量
     const [isData, setIsData] = useState({}); // 此頁資料
-    const [contentLoad, setContentLoad] = useState(false); // 動畫控制
     const fetchListener = useRef(null); // fetch
     const btnElement = useRef(null);
     const { Option } = Select;
@@ -44,12 +44,10 @@ const CardList = ({ history }) => {
         };
         setIsLoading(true);
         fetchListener.current = axios(productsPagesAPI('GET', data))
-            .then(result => {
-                // console.log(result);
-                setTimeout(() => {
-                    setIsLoading(false);
-                    setIsData(result.data);
-                }, 500);
+            .then(res => {
+                // console.log(res);
+                setIsLoading(false);
+                setIsData(res.data);
             })
             .catch(err => {
                 console.error(err);
@@ -59,7 +57,7 @@ const CardList = ({ history }) => {
     useEffect(() => {
         setTimeout(() => {
             setContentLoad(true);
-        }, 700);
+        }, 100);
     }, []);
 
     // 商品數量
@@ -117,7 +115,7 @@ const CardList = ({ history }) => {
                                             className="r_list_hover"
                                             id={data.itemId}
                                             onClick={e => {
-                                                history.push(`/pen-detail/${e.target.id}`);
+                                                history.push(`/pen-detail/${data.penId}`);
                                             }}
                                         />
                                         <div className="r_list_card">
@@ -126,7 +124,7 @@ const CardList = ({ history }) => {
                                                     <div className="r_list_head">
                                                         <div className="figure_icon">
                                                             <img
-                                                                src={require(`images/Home/${data.itemImg}`)}
+                                                                src={require(`images/pen/${data.itemImg}`)}
                                                                 alt="頭像"
                                                             />
                                                         </div>

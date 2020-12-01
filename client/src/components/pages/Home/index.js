@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React from 'react';
 
-import NavTop from 'components/pages/Home/NavTop';
-import Header from 'components/pages/Home/L-Header';
+// DesignSystem
+import NavTop from 'components/DesignSystem/NavTop';
+import HeaderTitle from 'components/DesignSystem/HeaderTitle';
+
+// components
 import Averge from 'components/pages/Home/L-Averge';
 import Comments from 'components/pages/Home/L-Comments';
 import Admin from 'components/pages/Home/L-Admin';
 import CardList from 'components/pages/Home/R-CardList';
-
 
 import './style_module.scss';
 
@@ -14,7 +16,7 @@ const Home = () => {
     return (
         <main>
             <NavTop />
-            <Header />
+            <HeaderTitle />
             <div className="rating_body">
                 {/* left container */}
                 <div className="rating_l_card">

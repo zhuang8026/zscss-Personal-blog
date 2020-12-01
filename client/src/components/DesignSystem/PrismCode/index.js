@@ -35,7 +35,7 @@ const PrismCode = ({ code }) => {
 
     return (
         <>
-            <Highlight {...defaultProps} theme={theme} code={code.is_text} language="jsx">
+            <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
                 {({ className, style, tokens, getLineProps, getTokenProps }) => (
                     <Pre className={className} style={style}>
                         {tokens.map((line, i) => (

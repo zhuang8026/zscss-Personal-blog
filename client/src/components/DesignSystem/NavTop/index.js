@@ -5,8 +5,11 @@ import { from } from 'rxjs';
 // API
 import axios from 'axios';
 import { getAllAdminAPI } from 'api/admin';
+
 // Context
 import { AdminContext } from 'contexts/admin';
+
+import './style_module.scss';
 
 const NavTop = () => {
     const [list, setList] = useState([]); // admin list data
@@ -36,7 +39,7 @@ const NavTop = () => {
         let isIE11 = userAgent.indexOf('rv:11.0') > -1; //判斷是否是IE11瀏覽器
         let isEdge = userAgent.indexOf('Edge') > -1 && !isIE; //判斷是否IE的Edge瀏覽器
 
-        console.log('userAgent:', userAgent);
+        // console.log('userAgent:', userAgent);
         // console.log('isOpera:', isOpera);
         // console.log('isIE:', isIE);
         // console.log('isIE11:', isIE11);
@@ -91,7 +94,10 @@ const NavTop = () => {
                 <li>
                     {adminData.length > 0 && adminData[0].all.loginStatus ? (
                         <>
-                            <div className="nav_btn btn_left">{adminData[0].all.nickname}</div>
+                            <div className="nav_avatar btn_left">
+                                <img src={require(`images/admin/${adminData[0].all.userimg}`)} alt="avatar" />
+                            </div>
+                            {/* <div className="nav_btn btn_left">{adminData[0].all.nickname}</div> */}
                             <div
                                 className="nav_btn btn_left btn_out"
                                 onClick={() => {

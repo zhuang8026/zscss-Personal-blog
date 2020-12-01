@@ -10,7 +10,7 @@ import { ratingAllAPI } from 'api/products';
 // antd
 import { Rate } from 'antd'; // 星星
 
-const Averge = () => {
+const Averge = ({ penStar }) => {
     const [isLoading, setIsLoading] = useState(true); // 載入
     const [isStar, setIsStar] = useState([]); // 全部評分
     const [isRating, setIsRating] = useState(0.0); // 平均分
@@ -41,10 +41,10 @@ const Averge = () => {
             <div className="card_title">Averge Rating</div>
             <div className="card_rating">
                 <div className="rating_all">
-                    <h1>{isRating.toFixed(1)}</h1>
+                    <h1>{penStar?.toFixed(1)}</h1>
                     <div className="rating_all_star">
-                        <Rate disabled allowHalf defaultValue={0} value={isRating.toFixed(1)} />
-                        <div>({isStar.length} 次評分)</div>
+                        <Rate disabled allowHalf defaultValue={0} value={penStar?.toFixed(1)} />
+                        {/* <div>({isStar.length} 次評分)</div> */}
                     </div>
                 </div>
             </div>

@@ -70,11 +70,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// admin
+app.use("/admin", require(__dirname + "/admin.js"));
+
 // products
 app.use("/products", require(__dirname + "/products.js"));
 
-// admin
-app.use("/admin", require(__dirname + "/admin.js"));
+// products_detail.js
+app.use("/products_detail", require(__dirname + "/products_detail.js"));
 
 // 404
 app.use((req, res) => {
