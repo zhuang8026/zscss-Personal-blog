@@ -6,7 +6,7 @@ import NavTop from 'components/DesignSystem/NavTop';
 import HeaderTitle from 'components/DesignSystem/HeaderTitle';
 
 // components
-import Header from 'components/pages/penDetail/L-Header';
+// import Header from 'components/pages/penDetail/L-Header';
 import Averge from 'components/pages/penDetail/L-Averge';
 import PenInner from 'components/pages/penDetail/R-PenInner';
 
@@ -17,7 +17,7 @@ import './style_module.scss';
 
 const PenDetail = () => {
     const { detailData } = useContext(AdminContext);
-    console.log(detailData);
+
     return (
         <main>
             <NavTop />

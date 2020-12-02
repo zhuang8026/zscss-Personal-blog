@@ -8,6 +8,7 @@ import { productsPagesAPI } from 'api/products';
 
 // DesignSystem
 import Loading from 'components/DesignSystem/Loading';
+import NoData from 'components/DesignSystem/NoData';
 
 // antd
 import { Rate } from 'antd';
@@ -30,6 +31,7 @@ const CardList = ({ history }) => {
     const btnElement = useRef(null);
     const { Option } = Select;
 
+    console.log('isData:', isData);
     const handleChange = value => {
         // console.log(`selected: ${value}`);
         setIsStar(value);
@@ -45,9 +47,11 @@ const CardList = ({ history }) => {
         setIsLoading(true);
         fetchListener.current = axios(productsPagesAPI('GET', data))
             .then(res => {
-                // console.log(res);
-                setIsLoading(false);
-                setIsData(res.data);
+                if (res.status === 200) {
+                    // console.log(res);
+                    setIsLoading(false);
+                    setIsData(res.data);
+                }
             })
             .catch(err => {
                 console.error(err);
@@ -140,7 +144,12 @@ const CardList = ({ history }) => {
                                             </div>
                                             <div className="r_list_bottom">
                                                 <div className="r_list_star">
-                                                    <Rate disabled allowHalf defaultValue={data.itemStar} />
+                                                    <Rate
+                                                        disabled
+                                                        allowHalf
+                                                        defaultValue={data.itemStar}
+                                                        value={data.itemStar}
+                                                    />
                                                 </div>
                                                 <div className="r_list_tag">
                                                     <span>#太棒了</span>
@@ -164,7 +173,7 @@ const CardList = ({ history }) => {
                         />
                     </>
                 ) : (
-                    <>NoData</>
+                    <NoData />
                 )}
             </div>
         </div>

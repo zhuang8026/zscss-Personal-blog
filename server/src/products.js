@@ -30,12 +30,11 @@ router.get("/pages/:page?/:star?", async (req, res) => {
 // 分頁
 const getDataList = async (req) => {
   // console.log(req);
-  const perPage = 5;
+  const perPage = 10;
   let page = parseInt(req.params.page) || 1;
   let star = parseInt(req.params.star);
   // let typeBrands = req.params.type || '';
-  // console.log("page", page);
-  // console.log('types',typeBrands)
+
   const output = {
     star: star, // 星星數量
     page: page, // 目前在第幾頁
@@ -49,6 +48,7 @@ const getDataList = async (req) => {
 
   output.totalRows = r1[0].num; // 全部資料數量
   output.totalPages = Math.ceil(output.totalRows / perPage);
+
   if (page < 1) page = 1;
   if (page > output.totalPages) page = output.totalPages;
   if (output.totalPages === 0) page = 0;
@@ -61,23 +61,33 @@ const getDataList = async (req) => {
     star !== 0 ? "=" + star : ""
   } ORDER BY itemId ASC LIMIT ${(page - 1) * perPage}, ${perPage}`;
 
+  const [r3] = await db.query(
+    `SELECT COUNT(1) num FROM items Where itemStar${
+      star !== 0 ? "=" + star : ""
+    }`
+  );
+
   const [r2] = await db.query(sql);
   if (r2) output.rows = r2;
 
   // 如果 star 分數 不是 all rating 才執行
   if (star !== 0) {
-    output.totalRows = r2.length;
+    // output.totalRows = r2.length;
+    output.totalRows = r3[0].num; // 全部資料數量
     output.totalPages = Math.ceil(output.totalRows / perPage);
+    // console.log("r2", r2);
+    // console.log("totalRows", output.totalRows);
+    // console.log("output", output.totalPages);
     if (page < 1) page = 1;
     if (page > output.totalPages) page = output.totalPages;
     if (output.totalPages === 0) page = 0;
   }
 
-  output.rows = r2;
   for (let i of r2) {
     i.created_at = moment(i.created_at).format("YYYY/MM/DD HH:mm:ss");
     i.updated_at = moment(i.updated_at).format("YYYY/MM/DD HH:mm:ss");
   }
+  output.rows = r2;
 
   return output;
 };

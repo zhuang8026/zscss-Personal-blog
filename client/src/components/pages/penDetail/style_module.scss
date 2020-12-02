@@ -43,26 +43,26 @@ main {
                     display: inline-block;
                     margin-right: 10px;
                 }
-                .rating_loading {
-                    width: 130px;
-                    height: 20px;
-                    border-radius: 10px;
-                    opacity: 0.6;
-                    background: linear-gradient(90deg, #0073e6, #0ca);
-                    background-size: 200% 200%;
-                    -webkit-animation: gradient 3.5s linear infinite;
-                    -moz-animation: gradient 3.5s linear infinite;
-                    animation: gradient 3.5s ease infinite;
-                }
-                .rating_t1 {
-                    width: 140px;
-                }
-                .rating_t2 {
-                    width: 94px;
-                }
-                .rating_t3 {
-                    width: 150px;
-                }
+                // .rating_loading {
+                //     width: 130px;
+                //     height: 20px;
+                //     border-radius: 10px;
+                //     opacity: 0.6;
+                //     background: linear-gradient(90deg, #0073e6, #0ca);
+                //     background-size: 200% 200%;
+                //     -webkit-animation: gradient 3.5s linear infinite;
+                //     -moz-animation: gradient 3.5s linear infinite;
+                //     animation: gradient 3.5s ease infinite;
+                // }
+                // .rating_t1 {
+                //     width: 140px;
+                // }
+                // .rating_t2 {
+                //     width: 94px;
+                // }
+                // .rating_t3 {
+                //     width: 150px;
+                // }
             }
         }
     }
