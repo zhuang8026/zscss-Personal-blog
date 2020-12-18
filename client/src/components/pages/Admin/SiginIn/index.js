@@ -47,7 +47,7 @@ const SiginIn = ({ history }) => {
         setIsLoading(true);
         const signInData = {
             account: data.username,
-            password: data.password
+            password: decodeURIComponent(data.password)
         };
         fetchListener.current = from(axios(postAdminSignIinAPI(signInData))).subscribe(res => {
             // console.log('postAdminSignIinAPI:', res);

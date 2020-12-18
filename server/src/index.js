@@ -89,7 +89,7 @@ app.use((req, res) => {
 });
 
 // server 侦听 3009
-app.listen(3009, () => {
+app.listen(process.env.PORT || 3009, () => {
   console.log(
     "server work - please use localhost:3009, William-server control"
   );
