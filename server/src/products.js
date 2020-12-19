@@ -93,13 +93,13 @@ const getDataList = async (req) => {
 };
 
 // 全站 搜索 navbar search
-// http://localhost:3009/products/search/a80
-router.get("/search/:getSearch?", (req, res) => {
-  let getSearch = req.params.getSearch;
-  // console.log('getSearch:', getSearch)
-  const sql = `SELECT * FROM items WHERE itemName LIKE '%${getSearch}%' OR itemsbrand LIKE '%${getSearch}%' `;
+// http://localhost:3009/products/search
+router.post("/search", (req, res) => {
+  let getSearch = req.body.search;
+  console.log("getSearch:", getSearch);
+  const sql = `SELECT * FROM items WHERE itemName LIKE '%${getSearch}%' OR itemsText LIKE '%${getSearch}%'`;
   db.query(sql).then(([results]) => {
-    // console.log(results)
+    // console.log(results);
     res.json(results);
   });
 });

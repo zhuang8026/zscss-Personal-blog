@@ -17,6 +17,9 @@ const NavTop = () => {
     const fetchListener = useRef(null); // fetch
     // const WEDURL = window.location.href;
 
+    // console.log 專區
+    // console.log('adminData:', adminData)
+
     // admin list API (get)
     const getAllAdminAPICallBack = data => {
         fetchListener.current = from(axios(getAllAdminAPI())).subscribe(res => {
@@ -89,7 +92,7 @@ const NavTop = () => {
     };
 
     return (
-        <div className="top_nav">
+        <div className={`top_nav ${adminData[0]?.all?.loginStatus ? 'member_in' : 'member_out'}`}>
             <ul>
                 <li>
                     {adminData.length > 0 && adminData[0].all.loginStatus ? (
@@ -122,12 +125,16 @@ const NavTop = () => {
                         </div>
                     )}
 
-                    <div className="nav_btn btn_left">{list.length > 0 ? list.length : 0}/人</div>
+                    {/* <div className="nav_btn btn_left">{list.length > 0 ? list.length : 0}/人</div> */}
                 </li>
-                <li>
-                    <div className="nav_btn btn_right">新增</div>
-                    <div className="nav_btn btn_right">查詢</div>
-                </li>
+                {adminData.length > 0 && adminData[0].all.loginStatus ? (
+                    <li>
+                        <div className="nav_btn btn_right">新增</div>
+                        <div className="nav_btn btn_right">查詢</div>
+                    </li>
+                ) : (
+                    <></>
+                )}
             </ul>
         </div>
     );

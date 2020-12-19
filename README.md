@@ -33,6 +33,7 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
 
 - 星星評分分析 (R)
 - admin 系統 (CRUD)
+- search 模糊搜尋 
 
 ### `- 版本控制 -`
 
@@ -49,3 +50,4 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
   - 20201103 - v1.1.5 - admin 完成 && Card List 完成
     - 20201107 - v1.1.6 - detail 完成
     - 20201107 - v1.1.7 - json-server 測試, 將大量資料以 json 各式傳入 DB
+    - 20201220 - v1.1.8 - 新增模糊搜尋功能

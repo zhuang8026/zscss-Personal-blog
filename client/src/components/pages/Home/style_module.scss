@@ -2,6 +2,8 @@ main {
     position: absolute;
     top: 0px;
     left: 90px;
+    width: -webkit-calc(100% - 90px);
+    width: -moz-calc(100% - 90px);
     width: calc(100% - 90px);
     height: 100%;
     z-index: 200;
@@ -9,78 +11,22 @@ main {
     overflow-y: auto;
     overflow-x: hidden;
     background: url('../../../images/Home/1.jpg') center center no-repeat;
+    -o-background-size: cover;
     background-size: cover;
     color: #fff;
-
-    .top_nav {
-        width: 100%;
-        height: 70px;
-        background-color: #051d35;
-        border-bottom: 1px solid #394958;
-        z-index: 999;
-        margin-bottom: 20px;
-
-        ul {
-            width: 90%;
-            height: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            li {
-                display: flex;
-
-                .btn_left {
-                    margin-right: 10px;
-                    a {
-                        color: #fff;
-                    }
-                }
-
-                .btn_right {
-                    margin-left: 10px;
-                }
-
-                .nav_btn {
-                    border: 1px solid #fff;
-                    border-radius: 25px;
-                    width: 100px;
-                    height: 36px;
-                    line-height: 36px;
-                    text-align: center;
-                }
-
-                .nav_avatar {
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    border: 1px solid #fff;
-                    img {
-                        width: 100%;
-                    }
-                }
-
-                .btn_out {
-                    transition: 0.3s;
-                    cursor: pointer;
-                    &:hover {
-                        // background-size: 200% 200%;
-                        // background: linear-gradient(90deg, #0073e6, #0ca);
-                        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.2);
-                    }
-                }
-            }
-        }
-    }
 
     .rating_title_inner {
         width: 90%;
         margin: 0 auto;
 
         .rating_title {
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
             margin-bottom: 10px;
 
@@ -100,7 +46,13 @@ main {
         .rating_time {
             font-size: 14px;
             .rating_data {
+                display: -webkit-flex;
+                display: -moz-box;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-align-items: center;
+                -moz-box-align: center;
+                -ms-flex-align: center;
                 align-items: center;
                 span {
                     display: inline-block;
@@ -133,6 +85,9 @@ main {
     .rating_body {
         width: 90%;
         margin: 0 auto;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
         margin-top: 10px;
         margin-bottom: 20px;
@@ -147,9 +102,16 @@ main {
                 margin-bottom: 10px;
                 .card_title {
                     height: 44px;
+                    display: -webkit-flex;
+                    display: -moz-box;
+                    display: -ms-flexbox;
                     display: flex;
+                    -webkit-align-items: center;
+                    -moz-box-align: center;
+                    -ms-flex-align: center;
                     align-items: center;
                     padding: 0 16px;
+                    -moz-box-sizing: border-box;
                     box-sizing: border-box;
                     font-weight: bold;
                     background-color: rgba(11, 65, 96, 1);
@@ -163,7 +125,13 @@ main {
                     padding: 10px 16px;
 
                     .rating_all {
+                        display: -webkit-flex;
+                        display: -moz-box;
+                        display: -ms-flexbox;
                         display: flex;
+                        -webkit-align-items: center;
+                        -moz-box-align: center;
+                        -ms-flex-align: center;
                         align-items: center;
 
                         h1 {
@@ -184,8 +152,17 @@ main {
 
                         .rating_info {
                             width: 100%;
+                            display: -webkit-flex;
+                            display: -moz-box;
+                            display: -ms-flexbox;
                             display: flex;
+                            -webkit-justify-content: space-between;
+                            -moz-box-pack: justify;
+                            -ms-flex-pack: justify;
                             justify-content: space-between;
+                            -webkit-align-items: center;
+                            -moz-box-align: center;
+                            -ms-flex-align: center;
                             align-items: center;
                             font-size: 14px;
                         }
@@ -207,7 +184,13 @@ main {
                     ul {
                         margin-bottom: 10px;
                         .card_tag {
+                            display: -webkit-flex;
+                            display: -moz-box;
+                            display: -ms-flexbox;
                             display: flex;
+                            -webkit-justify-content: space-between;
+                            -moz-box-pack: justify;
+                            -ms-flex-pack: justify;
                             justify-content: space-between;
                             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
                             padding: 5px 0;
@@ -220,15 +203,33 @@ main {
                     padding: 10px 16px;
 
                     li {
+                        display: -webkit-flex;
+                        display: -moz-box;
+                        display: -ms-flexbox;
                         display: flex;
+                        -webkit-align-items: center;
+                        -moz-box-align: center;
+                        -ms-flex-align: center;
                         align-items: center;
+                        -webkit-justify-content: space-between;
+                        -moz-box-pack: justify;
+                        -ms-flex-pack: justify;
                         justify-content: space-between;
                         padding: 10px 0;
                         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
                         .rating_admin_img {
+                            display: -webkit-flex;
+                            display: -moz-box;
+                            display: -ms-flexbox;
                             display: flex;
+                            -webkit-justify-content: center;
+                            -moz-box-pack: center;
+                            -ms-flex-pack: center;
                             justify-content: center;
+                            -webkit-align-items: center;
+                            -moz-box-align: center;
+                            -ms-flex-align: center;
                             align-items: center;
                             font-weight: 600;
                             .admin_online {
@@ -237,6 +238,9 @@ main {
                                 border-radius: 50%;
                                 background-color: gray;
                                 margin-left: 10px;
+                                -webkit-transition: 1s;
+                                -o-transition: 1s;
+                                -moz-transition: 1s;
                                 transition: 1s;
                             }
                             .admin_state {
@@ -252,14 +256,31 @@ main {
         }
 
         .rating_r_list {
+            width: -webkit-calc(100% - 300px);
+            width: -moz-calc(100% - 300px);
             width: calc(100% - 300px);
             margin-left: 14px;
 
             .rating_r_select {
                 margin-bottom: 10px;
+                display: -webkit-flex;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: flex;
+                text-align: center;
+                .ant-select {
+                    margin-right: 10px;
+                }
                 .ant-select-selector {
                     background-color: transparent;
                     color: #fff;
+                }
+                .rating_serach {
+                    .ant-input-group-addon {
+                        padding: 0;
+                        background-color: transparent;
+                        border: 0px solid transparent;
+                    }
                 }
             }
 
@@ -279,6 +300,9 @@ main {
     height: 60px;
     margin: 0 10px 0 0;
     border-radius: 50%;
+    background: -webkit-linear-gradient(left, #0073e6, #0ca);
+    background: -moz-linear-gradient(left, #0073e6, #0ca);
+    background: -o-linear-gradient(left, #0073e6, #0ca);
     background: linear-gradient(90deg, #0073e6, #0ca);
     overflow: hidden;
     padding: 3px;
@@ -299,9 +323,11 @@ main {
 
 .figure_icon_color {
     opacity: 0.5;
+    -o-background-size: 400% 400%;
     background-size: 400% 400%;
     -webkit-animation: gradient 3.5s linear infinite;
     -moz-animation: gradient 3.5s linear infinite;
+    -o-animation: gradient 3.5s ease infinite;
     animation: gradient 3.5s ease infinite;
 }
 
@@ -309,11 +335,16 @@ main {
     width: 100px;
     height: 20px;
     border-radius: 10px;
+    background: -webkit-linear-gradient(left, #0073e6, #0ca);
+    background: -moz-linear-gradient(left, #0073e6, #0ca);
+    background: -o-linear-gradient(left, #0073e6, #0ca);
     background: linear-gradient(90deg, #0073e6, #0ca);
     opacity: 0.5;
+    -o-background-size: 400% 400%;
     background-size: 400% 400%;
     -webkit-animation: gradient 3.5s linear infinite;
     -moz-animation: gradient 3.5s linear infinite;
+    -o-animation: gradient 3.5s ease infinite;
     animation: gradient 3.5s ease infinite;
 }
 
@@ -321,11 +352,16 @@ main {
     width: 100%;
     height: 100px;
     border-radius: 10px;
+    background: -webkit-linear-gradient(left, #0073e6, #0ca);
+    background: -moz-linear-gradient(left, #0073e6, #0ca);
+    background: -o-linear-gradient(left, #0073e6, #0ca);
     background: linear-gradient(90deg, #0073e6, #0ca);
     opacity: 0.5;
+    -o-background-size: 400% 400%;
     background-size: 400% 400%;
     -webkit-animation: gradient 3.5s linear infinite;
     -moz-animation: gradient 3.5s linear infinite;
+    -o-animation: gradient 3.5s ease infinite;
     animation: gradient 3.5s ease infinite;
 }
 
@@ -341,6 +377,17 @@ main {
     }
 }
 @-webkit-keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@-o-keyframes gradient {
     0% {
         background-position: 0% 50%;
     }

@@ -24,14 +24,10 @@ const HeaderTitle = ({ penImg, title }) => {
     return (
         <div className="rating_title_inner">
             <div className="rating_title">
-                {penImg ? (
-                    <div className="figure_icon">
-                        <img src={require(`images/pen/${penImg}`)} alt="頭像" />
-                    </div>
-                ) : (
-                    <div className="figure_icon"></div>
-                )}
-                {title ? <h1> {title} </h1> : <span data-heading="CSS.">{'ZSCSS.'}</span>}
+                <div className="figure_icon">
+                    <img src={require(`images/pen/${penImg ? penImg : 'null_img.png'}`)} alt="頭像" />
+                </div>
+                {title ? <h1> {title} </h1> : <span data-heading="Script.">{'JavaScript.'}</span>}
             </div>
             <div className="rating_time">
                 <div className="rating_data">

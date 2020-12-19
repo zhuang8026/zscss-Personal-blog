@@ -9,7 +9,7 @@ const NavLeft = () => {
             <ul>
                 <li>
                     <Link to={'/'}>
-                        <span>come soon</span>
+                        <span>JavaScript</span>
                         <img src={require(`images/Home/zscss.png`)} alt="home" />
                     </Link>
                 </li>

@@ -16,7 +16,7 @@ import { SmileTwoTone } from '@ant-design/icons';
 export const AdminContext = createContext();
 
 const AdminContainer = props => {
-    const { history, location, match } = props;
+    // const { history, location, match } = props;
     // const [admin, setAdmin] = useState(JSON.parse(Cookies.get('admin_scToken')));
     const [adminData, setAdminData] = useState([]);
     const [detailData, setDetailData] = useState({}); // 此頁資料
@@ -30,6 +30,7 @@ const AdminContainer = props => {
         Cookies.set('admin_scToken', res.data, { expires: 7, path: '' });
         const isAdmin = [];
         isAdmin.push({ all: JSON.parse(Cookies.get('admin_scToken')) });
+        
         setAdminData(isAdmin);
     };
 

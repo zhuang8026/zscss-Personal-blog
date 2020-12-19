@@ -1,20 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import classnames from 'classnames';
 import posed from 'react-pose';
 
 // API
 import axios from 'axios';
-import { productsPagesAPI } from 'api/products';
+import { productsPagesAPI, postSearchCardListAPI } from 'api/products'; // product001 seacrh001
 
 // DesignSystem
 import Loading from 'components/DesignSystem/Loading';
 import NoData from 'components/DesignSystem/NoData';
 
 // antd
+
 import { Rate } from 'antd';
+import { Input } from 'antd';
 import { Select } from 'antd';
 import { Pagination } from 'antd';
-import { CloudUploadOutlined, StarFilled } from '@ant-design/icons';
+import { CloudUploadOutlined, StarFilled, AudioOutlined } from '@ant-design/icons';
 
 const ItemAnimated = posed.div({
     hidden: { opacity: 0 },
@@ -27,11 +30,13 @@ const CardList = ({ history }) => {
     const [isPage, setIsPage] = useState(1); // 頁碼
     const [isStar, setIsStar] = useState(0); // rating 數量
     const [isData, setIsData] = useState({}); // 此頁資料
+    const [isArray, setIsArray] = useState([]); // 此頁資料
     const fetchListener = useRef(null); // fetch
     const btnElement = useRef(null);
     const { Option } = Select;
+    const { Search } = Input;
 
-    console.log('isData:', isData);
+    // console.log('isArray:', isArray);
     const handleChange = value => {
         // console.log(`selected: ${value}`);
         setIsStar(value);
@@ -51,6 +56,26 @@ const CardList = ({ history }) => {
                     // console.log(res);
                     setIsLoading(false);
                     setIsData(res.data);
+                    setIsArray(res.data.rows);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+    // API 獲取此頁資料
+    const postSearchCardListAPICallBack = selectData => {
+        const data = {
+            search: selectData
+        };
+        setIsLoading(true);
+        fetchListener.current = axios(postSearchCardListAPI(data))
+            .then(res => {
+                // console.log(res);
+                if (res.status === 200) {
+                    setIsLoading(false);
+                    setIsArray(res.data);
                 }
             })
             .catch(err => {
@@ -91,6 +116,14 @@ const CardList = ({ history }) => {
                         5 <StarFilled className="icon_star" />
                     </Option>
                 </Select>
+                <div className={classnames('rating_serach')}>
+                    <Search
+                        placeholder="fast search"
+                        onSearch={value => {
+                            postSearchCardListAPICallBack(value);
+                        }}
+                    />
+                </div>
             </div>
             {/* 數量 */}
             <div className="rating_r_Showing">
@@ -111,7 +144,7 @@ const CardList = ({ history }) => {
                     </>
                 ) : isData.totalRows > 0 ? (
                     <>
-                        {isData.rows.map((data, index) => {
+                        {isArray.map((data, index) => {
                             return (
                                 <ItemAnimated pose={contentLoad ? 'visible' : 'hidden'}>
                                     <div className="r_list" key={index} ref={btnElement}>
@@ -151,10 +184,11 @@ const CardList = ({ history }) => {
                                                         value={data.itemStar}
                                                     />
                                                 </div>
-                                                <div className="r_list_tag">
+                                                {/* 20201219 - 暫時隱藏 */}
+                                                {/* <div className="r_list_tag">
                                                     <span>#太棒了</span>
                                                     <span>#非常有幫助</span>
-                                                </div>
+                                                </div> */}
                                                 <div className="r_list_tag_content">{data.itemsText}</div>
                                             </div>
                                         </div>

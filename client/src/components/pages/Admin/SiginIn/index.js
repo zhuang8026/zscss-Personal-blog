@@ -32,6 +32,7 @@ const SiginIn = ({ history }) => {
             account: objectValue
         };
         fetchListener.current = from(axios(postUserNameCheckInAPI(adminData))).subscribe(res => {
+            console.log(res)
             if (res.status === 200) {
                 if (res.data.state === 200) {
                     setUsernameStatus(true);

@@ -41,7 +41,7 @@ const Admin = () => {
                             <div className="rating_admin_img">
                                 <div className="figure_icon">
                                     <img
-                                        src={require(`images/Home/${data.userimg ? data.userimg : 'null_img.jpg'}`)}
+                                        src={require(`images/Home/${data.userimg ? data.userimg : 'null_img.png'}`)}
                                         alt="頭像"
                                     />
                                 </div>

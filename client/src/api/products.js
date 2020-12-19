@@ -30,3 +30,15 @@ export const detailPenAPI = (method, data) => {
         'Content-Type': 'application/json'
     };
 };
+
+// seacrh001 模糊搜尋
+export const postSearchCardListAPI = data => {
+    return {
+        method: 'POST',
+        baseURL: 'http://localhost:3009',
+        url: `products/search`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        data: data
+    };
+};
