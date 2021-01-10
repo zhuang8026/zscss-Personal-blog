@@ -7,6 +7,9 @@ const penDetail = lazy(() => import('components/pages/penDetail'));
 const SiginIn = lazy(() => import('components/pages/Admin/SiginIn'));
 const SiginUp = lazy(() => import('components/pages/Admin/SiginUp'));
 
+//test
+const Test = lazy(() => import('components/pages/Test'));
+
 const routes = [
     {
         path: '/',
@@ -32,6 +35,13 @@ const routes = [
     {
         path: '/pen-detail/:id',
         component: penDetail,
+        exact: true,
+        authRequired: false,
+        layouts: ['NavLeft']
+    },
+    {
+        path: '/test',
+        component: Test,
         exact: true,
         authRequired: false,
         layouts: ['NavLeft']

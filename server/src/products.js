@@ -110,9 +110,7 @@ router.get("/detail/:id", (req, res) => {
   // console.log(req.params.id);
   let id = req.params.id;
   // let sql = `SELECT * FROM items WHERE itemId=${id}`;
-  let sql =
-    "SELECT * FROM `items` AS `it` INNER JOIN `multiple_images` AS `mu` ON `it`.`itemId` = `mu`.`itemId` WHERE `it`.`itemId`=" +
-    id;
+  let sql = "SELECT * FROM `items` AS `it` INNER JOIN `multiple_images` AS `mu` ON `it`.`itemId` = `mu`.`itemId` WHERE `it`.`itemId`=" + id;
   let output = {};
   db.query(sql).then((results) => {
     // if (error) throw error;

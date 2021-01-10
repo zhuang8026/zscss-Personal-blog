@@ -18,7 +18,7 @@ const NavTop = () => {
     // const WEDURL = window.location.href;
 
     // console.log 專區
-    // console.log('adminData:', adminData)
+    // console.log('adminData:', adminData);
 
     // admin list API (get)
     const getAllAdminAPICallBack = data => {
@@ -98,7 +98,11 @@ const NavTop = () => {
                     {adminData.length > 0 && adminData[0].all.loginStatus ? (
                         <>
                             <div className="nav_avatar btn_left">
-                                <img src={require(`images/admin/${adminData[0].all.userimg}`)} alt="avatar" />
+                                {adminData[0].all.userimg === 'null' ? (
+                                    <img src={require(`images/Home/null_img.png`)} alt="avatar" />
+                                ) : (
+                                    <img src={require(`images/admin/${adminData[0].all.userimg}`)} alt="avatar" />
+                                )}
                             </div>
                             {/* <div className="nav_btn btn_left">{adminData[0].all.nickname}</div> */}
                             <div

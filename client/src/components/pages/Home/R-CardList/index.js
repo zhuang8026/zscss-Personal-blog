@@ -12,12 +12,14 @@ import Loading from 'components/DesignSystem/Loading';
 import NoData from 'components/DesignSystem/NoData';
 
 // antd
-
 import { Rate } from 'antd';
 import { Input } from 'antd';
 import { Select } from 'antd';
 import { Pagination } from 'antd';
 import { CloudUploadOutlined, StarFilled, AudioOutlined } from '@ant-design/icons';
+
+// outside framework
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const ItemAnimated = posed.div({
     hidden: { opacity: 0 },
@@ -36,11 +38,36 @@ const CardList = ({ history }) => {
     const { Option } = Select;
     const { Search } = Input;
 
-    // console.log('isArray:', isArray);
+    console.log('isArray:', isArray);
+
     const handleChange = value => {
         // console.log(`selected: ${value}`);
         setIsStar(value);
         setIsPage(1);
+    };
+
+    //
+    const onDragEnd = result => {
+        if (!result.destination) {
+            return;
+        }
+        console.log(result);
+        const items = reorder(isArray, result.source.index, result.destination.index);
+        console.log('items:', items);
+        setIsArray(items);
+    };
+
+    // 重新记录数组顺序
+    const reorder = (list, startIndex, endIndex) => {
+        const result = Array.from(list);
+        //删除并记录 删除元素
+        const [removed] = result.splice(startIndex, 1);
+
+        console.log('removed:', removed);
+
+        //将原来的元素添加进数组
+        result.splice(endIndex, 0, removed);
+        return result;
     };
 
     // API 獲取此頁資料
@@ -118,7 +145,7 @@ const CardList = ({ history }) => {
                 </Select>
                 <div className={classnames('rating_serach')}>
                     <Search
-                        placeholder="fast search"
+                        placeholder="search"
                         onSearch={value => {
                             postSearchCardListAPICallBack(value);
                         }}
@@ -144,58 +171,100 @@ const CardList = ({ history }) => {
                     </>
                 ) : isData.totalRows > 0 ? (
                     <>
-                        {isArray.map((data, index) => {
-                            return (
-                                <ItemAnimated pose={contentLoad ? 'visible' : 'hidden'}>
-                                    <div className="r_list" key={index} ref={btnElement}>
-                                        <div
-                                            className="r_list_hover"
-                                            id={data.itemId}
-                                            onClick={e => {
-                                                history.push(`/pen-detail/${data.penId}`);
-                                            }}
-                                        />
-                                        <div className="r_list_card">
-                                            <div className="r_list_title">
-                                                <div className="r_list_title_left">
-                                                    <div className="r_list_head">
-                                                        <div className="figure_icon">
-                                                            <img
-                                                                src={require(`images/pen/${data.itemImg}`)}
-                                                                alt="頭像"
-                                                            />
-                                                        </div>
+                        <DragDropContext onDragEnd={onDragEnd}>
+                            <Droppable droppableId="droppable">
+                                {(provided, snapshot) => (
+                                    <div
+                                        // provided.droppableProps应用的相同元素.
+                                        {...provided.droppableProps}
+                                        // 为了使 droppable 能够正常工作必须 绑定到最高可能的DOM节点中provided.innerRef.
+                                        ref={provided.innerRef}
+                                    >
+                                        {isArray.map((data, index) => (
+                                            <Draggable
+                                                key={data.itemId}
+                                                draggableId={data.itemId.toString()}
+                                                index={index}
+                                            >
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        // style={getItemStyle(
+                                                        //     snapshot.isDragging,
+                                                        //     provided.draggableProps.style
+                                                        // )}
+                                                    >
+                                                        <ItemAnimated pose={contentLoad ? 'visible' : 'hidden'}>
+                                                            <div
+                                                                className="r_list"
+                                                                key={data.itemId}
+                                                                ref={btnElement}
+                                                                index={index}
+                                                            >
+                                                                <div
+                                                                    className="r_list_hover"
+                                                                    id={data.itemId}
+                                                                    onClick={e => {
+                                                                        history.push(`/pen-detail/${data.penId}`);
+                                                                    }}
+                                                                />
+                                                                <div className="r_list_card">
+                                                                    <div className="r_list_title">
+                                                                        <div className="r_list_title_left">
+                                                                            <div className="r_list_head">
+                                                                                <div className="figure_icon">
+                                                                                    <img
+                                                                                        src={require(`images/pen/${data.itemImg}`)}
+                                                                                        alt="頭像"
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="r_list_content">
+                                                                                <h2 className="right_list_title">
+                                                                                    {' '}
+                                                                                    {data.itemName}{' '}
+                                                                                </h2>
+                                                                                <p>{data.updated_at}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="r_list_title_right">
+                                                                            <CloudUploadOutlined className="icon-20" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="r_list_bottom">
+                                                                        <div className="r_list_star">
+                                                                            <Rate
+                                                                                disabled
+                                                                                allowHalf
+                                                                                defaultValue={data.itemStar}
+                                                                                value={data.itemStar}
+                                                                            />
+                                                                        </div>
+                                                                        {/* 20201219 - 暫時隱藏 */}
+                                                                        {/* <div className="r_list_tag">
+                                                                        <span>#太棒了</span>
+                                                                        <span>#非常有幫助</span>
+                                                                    </div> */}
+                                                                        <div className="r_list_tag_content">
+                                                                            {data.itemsText}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ItemAnimated>
                                                     </div>
-                                                    <div className="r_list_content">
-                                                        <h2 className="right_list_title"> {data.itemName} </h2>
-                                                        <p>{data.updated_at}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="r_list_title_right">
-                                                    <CloudUploadOutlined className="icon-20" />
-                                                </div>
-                                            </div>
-                                            <div className="r_list_bottom">
-                                                <div className="r_list_star">
-                                                    <Rate
-                                                        disabled
-                                                        allowHalf
-                                                        defaultValue={data.itemStar}
-                                                        value={data.itemStar}
-                                                    />
-                                                </div>
-                                                {/* 20201219 - 暫時隱藏 */}
-                                                {/* <div className="r_list_tag">
-                                                    <span>#太棒了</span>
-                                                    <span>#非常有幫助</span>
-                                                </div> */}
-                                                <div className="r_list_tag_content">{data.itemsText}</div>
-                                            </div>
-                                        </div>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {/* 占位符号 */}
+                                        {provided.placeholder}
                                     </div>
-                                </ItemAnimated>
-                            );
-                        })}
+                                )}
+                            </Droppable>
+                        </DragDropContext>
+
                         <Pagination
                             simple
                             current={isPage}
