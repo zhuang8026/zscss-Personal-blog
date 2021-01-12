@@ -46,7 +46,7 @@ const CardList = ({ history }) => {
         setIsPage(1);
     };
 
-    //
+    // 拖拽settin
     const onDragEnd = result => {
         if (!result.destination) {
             return;

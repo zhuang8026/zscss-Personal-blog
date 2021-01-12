@@ -26,6 +26,7 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
     "js-cookie": "^2.2.1"
     "prism-react-renderer": "^1.1.1"
     "react-pose": "^4.0.10"
+    "react-beautiful-dnd": "^13.0.0"
 
 ### `- 功能說明 -`
 
@@ -52,3 +53,4 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
     - 20201107 - v1.1.6 - detail 完成
     - 20201107 - v1.1.7 - json-server 測試, 將大量資料以 json 各式傳入 DB
     - 20201220 - v1.1.8 - 新增模糊搜尋功能
+  - 20210112 - v1.2.0 - 新增Drag拖拽功能
