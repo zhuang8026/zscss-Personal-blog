@@ -1,7 +1,9 @@
 import React, { lazy } from 'react';
+import { getBooleanFromENV } from 'components/utils';
 
 const Home = lazy(() => import('components/pages/Home'));
 const penDetail = lazy(() => import('components/pages/penDetail'));
+const Java = lazy(() => import('components/pages/Java'));
 
 //admin
 const SiginIn = lazy(() => import('components/pages/Admin/SiginIn'));
@@ -47,5 +49,25 @@ const routes = [
         layouts: ['NavLeft']
     }
 ];
+
+//------- BEGIN: 藉由feature flag開關routes----------
+if (getBooleanFromENV('REACT_APP_IS_JAVA_OPEN', false)) {
+    routes.push(
+        {
+            path: '/java/:param?',
+            component: Java,
+            exact: true,
+            authRequired: false,
+            layouts: ['NavLeft']
+        }
+        // {
+        //     path: '/java/:param',
+        //     component: Java,
+        //     exact: true,
+        //     authRequired: false,
+        //     layouts: ['NavLeft']
+        // }
+    );
+}
 
 export default routes;

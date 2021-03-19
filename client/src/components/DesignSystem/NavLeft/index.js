@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import { getBooleanFromENV } from 'components/utils';
 
 import './style_module.scss';
 
@@ -13,10 +14,17 @@ const NavLeft = () => {
                         <img src={require(`images/Home/zscss.png`)} alt="home" />
                     </Link>
                 </li>
-                <li>
-                    <span>come soon</span>
-                    <img src={require(`images/Home/zscss.png`)} alt="vue" />
-                </li>
+                {getBooleanFromENV('REACT_APP_IS_JAVA_OPEN', false) ? (
+                    <li>
+                        <Link to={'/java'}>
+                            <span>Java</span>
+                            <img src={require(`images/Home/zscss.png`)} alt="vue" />
+                        </Link>
+                    </li>
+                ) : (
+                    <></>
+                )}
+
                 <li>
                     <span>come soon</span>
                     <img src={require(`images/Home/zscss.png`)} alt="react" />

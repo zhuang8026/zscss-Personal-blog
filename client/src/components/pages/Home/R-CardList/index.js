@@ -38,7 +38,7 @@ const CardList = ({ history }) => {
     const { Option } = Select;
     const { Search } = Input;
 
-    console.log('isArray:', isArray);
+    // console.log('isArray:', isArray);
 
     const handleChange = value => {
         // console.log(`selected: ${value}`);
@@ -51,9 +51,9 @@ const CardList = ({ history }) => {
         if (!result.destination) {
             return;
         }
-        console.log(result);
+        // console.log(result);
         const items = reorder(isArray, result.source.index, result.destination.index);
-        console.log('items:', items);
+        // console.log('items:', items);
         setIsArray(items);
     };
 
@@ -63,7 +63,7 @@ const CardList = ({ history }) => {
         //删除并记录 删除元素
         const [removed] = result.splice(startIndex, 1);
 
-        console.log('removed:', removed);
+        // console.log('removed:', removed);
 
         //将原来的元素添加进数组
         result.splice(endIndex, 0, removed);
