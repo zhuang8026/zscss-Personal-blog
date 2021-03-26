@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-const DragVertical = () => {
+const DndDrag = () => {
     const [items, setItems] = useState([
         {
             id: `item-1`,
@@ -99,4 +99,4 @@ const DragVertical = () => {
     );
 };
 
-export default DragVertical;
+export default DndDrag;

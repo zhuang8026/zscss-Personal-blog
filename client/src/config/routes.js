@@ -3,7 +3,7 @@ import { getBooleanFromENV } from 'components/utils';
 
 const Home = lazy(() => import('components/pages/Home'));
 const penDetail = lazy(() => import('components/pages/penDetail'));
-const Java = lazy(() => import('components/pages/Java'));
+const Animate = lazy(() => import('components/pages/Animate'));
 
 //admin
 const SiginIn = lazy(() => import('components/pages/Admin/SiginIn'));
@@ -54,8 +54,8 @@ const routes = [
 if (getBooleanFromENV('REACT_APP_IS_JAVA_OPEN', false)) {
     routes.push(
         {
-            path: '/java/:param?',
-            component: Java,
+            path: '/animate/:param?',
+            component: Animate,
             exact: true,
             authRequired: false,
             layouts: ['NavLeft']

@@ -7,38 +7,44 @@ import NavTop from 'components/DesignSystem/NavTop';
 
 // component
 import Tab from './Tab';
-import DragVertical from './DragVertical';
-import DragHorizontal from './DragHorizontal';
-import DragTable from './DragTable';
+import DndDrag from './DndDrag';
+import DragTableOrigin from './DragTableOrigin';
+import DragTableV1 from './DragTableV1';
+import DragNoUse from './DragNoUse';
 
 // css
 import './style_module.scss';
 
-const Java = ({ match, history, location }) => {
-    const javaRoutes = [
+const Animate = ({ match }) => {
+    const pathData = [
         {
-            key: 'DragVertical',
-            path: 'DragVertical',
-            component: DragVertical
+            title: 'dndDrag',
+            path: 'dndDrag',
+            component: DndDrag
         },
         {
-            key: 'DragHorizontal',
-            path: 'DragHorizontal',
-            component: DragHorizontal
+            title: 'DragTableOrigin',
+            path: 'dragTableOrigin',
+            component: DragTableOrigin
         },
         {
-            key: 'DragTable',
-            path: 'DragTable',
-            component: DragTable
+            title: 'DragTableV1',
+            path: 'dragTableV1',
+            component: DragTableV1
+        },
+        {
+            title: 'dragNoUse',
+            path: 'dragNoUse',
+            component: DragNoUse
         }
     ];
 
     return (
         <main>
             <NavTop />
-            <Tab />
+            <Tab pathData={pathData} />
             <Switch>
-                {javaRoutes.map((route, key) => (
+                {pathData.map((route, key) => (
                     <Route
                         key={`route_java_${key}`}
                         path={`${match.path}/${route.path}`}
@@ -54,4 +60,4 @@ const Java = ({ match, history, location }) => {
     );
 };
 
-export default withRouter(Java);
+export default withRouter(Animate);

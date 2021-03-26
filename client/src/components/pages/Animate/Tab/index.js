@@ -6,25 +6,11 @@ import { withRouter } from 'react-router-dom';
 // import classNames from 'classnames/bind';
 // const cx = classNames.bind(classes);
 
-const Tab = ({ history, location }) => {
-    const boxData = [
-        {
-            title: 'DragVertical',
-            path: 'DragVertical'
-        },
-        {
-            title: 'DragHorizontal',
-            path: 'DragHorizontal'
-        },
-        {
-            title: 'DragTable',
-            path: 'DragTable'
-        }
-    ];
+const Tab = ({ history, location, pathData }) => {
 
     return (
         <div className="box">
-            {boxData.map((data, index) => {
+            {pathData.map((data, index) => {
                 return (
                     <div
                         className="inner"
@@ -32,7 +18,7 @@ const Tab = ({ history, location }) => {
                         onClick={() => {
                             history.push({
                                 ...location,
-                                pathname: `/java/${data.path}`
+                                pathname: `/animate/${data.path}`
                             });
                         }}
                     >

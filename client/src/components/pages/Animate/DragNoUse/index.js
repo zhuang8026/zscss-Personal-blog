@@ -6,8 +6,8 @@ import { withRouter, Redirect, Link } from 'react-router-dom';
 // import classNames from 'classnames/bind';
 // const cx = classNames.bind(classes);
 
-const Test2 = ({}) => {
-    return <div className="box">Test2</div>;
+const DragNoUse = ({}) => {
+    return <div className="box">DragNoUse</div>;
 };
 
-export default withRouter(Test2);
+export default withRouter(DragNoUse);

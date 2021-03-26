@@ -16,8 +16,8 @@ const NavLeft = () => {
                 </li>
                 {getBooleanFromENV('REACT_APP_IS_JAVA_OPEN', false) ? (
                     <li>
-                        <Link to={'/java'}>
-                            <span>Java</span>
+                        <Link to={'/animate'}>
+                            <span>Animate</span>
                             <img src={require(`images/Home/zscss.png`)} alt="vue" />
                         </Link>
                     </li>
