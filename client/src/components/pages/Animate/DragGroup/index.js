@@ -27,27 +27,20 @@ const Index = () => {
 };
 
 const DragGroup = () => {
-    const { isDrag, setIsDrag, onDrop, onDragOver, domHandle } = useContext(DragContext);
-    console.log(isDrag);
+    const { isDrag, setIsDrag, onDrop, onDragOver, domHandle, GroupHandle } = useContext(DragContext);
+
     useEffect(() => {
         setIsDrag([...data]);
     }, []);
 
     return (
         <div className="container-drag">
-            <div
-                className="wip"
-                onDragOver={e => {
-                    onDragOver(e);
-                }}
-                onDrop={e => {
-                    onDrop(e, 'wip');
-                }}
-            >
-                <span className="task-header">A Group</span>
-                {domHandle('wip')}
-            </div>
+            {/* A Group */}
+            {GroupHandle('wip')}
+
             <h1>VS</h1>
+
+            {/* B Group */}
             <div
                 className="droppable"
                 onDragOver={e => {

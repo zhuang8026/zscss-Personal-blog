@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-import classnames from 'classnames';
-import posed from 'react-pose';
-
-// Context
-import DragProvider, { DragContext } from './Context/context_drag.js';
 
 // css
 import './style_module.scss';
@@ -16,17 +11,74 @@ const data = [
     { name: 'DDDD', category: 'complete', bgcolor: '#24936E' }
 ];
 
-const Index = () => {
-    return (
-        <DragProvider>
-            <DragTableHooks></DragTableHooks>
-        </DragProvider>
-    );
-};
 
 const DragTableHooks = () => {
-    const { isDrag, setIsDrag, onDrop, onDragOver, domHandle } = useContext(DragContext);
-    // console.log(isDrag);
+    const [isDrag, setIsDrag] = useState([]);
+
+    const onDragStart = (ev, id) => {
+        console.log('dragstart:', id);
+        ev.dataTransfer.setData('id', id);
+    };
+
+    const onDragOver = ev => {
+        ev.preventDefault();
+    };
+
+    const onDragOverItem = ev => {
+        console.log('on drop over item');
+        ev.preventDefault();
+    };
+
+    const onDrop = (ev, cat) => {
+        let id = ev.dataTransfer.getData('id');
+
+        let drag = isDrag.filter(drg => {
+            if (drg.name == id) {
+                drg.category = cat;
+            }
+            return drg;
+        });
+        setIsDrag(drag);
+    };
+
+    const onDropItem = (ev, cat, t) => {
+        console.log(ev.target, t, cat);
+        let id = ev.dataTransfer.getData('id');
+
+        let tar = isDrag.filter(task => task.name == t)[0];
+        console.log('From->', id, cat, ' To->', tar.name, tar.category);
+        let drag = isDrag.filter(drg => {
+            if (drg.name == id) {
+                drg.category = tar.category;
+            } else if (drg.name == tar.name) {
+                drg.category = cat;
+            }
+            return drg;
+        });
+
+        setIsDrag(drag);
+    };
+
+    const domHandle = categoryData => {
+        return isDrag.map(data => {
+            if (data.category === categoryData) {
+                return (
+                    <div
+                        key={data.name}
+                        onDragStart={e => onDragStart(e, data.name)}
+                        onDragOver={e => onDragOverItem(e)}
+                        onDrop={e => onDropItem(e, data.category == 'complete' ? 'wip' : 'complete', data.name)}
+                        draggable
+                        className="draggable"
+                        style={{ backgroundColor: data.bgcolor }}
+                    >
+                        {data.name}
+                    </div>
+                );
+            }
+        });
+    };
+
     useEffect(() => {
         setIsDrag([...data]);
     }, []);
@@ -62,4 +114,4 @@ const DragTableHooks = () => {
     );
 };
 
-export default withRouter(Index);
+export default withRouter(DragTableHooks);

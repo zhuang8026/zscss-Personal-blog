@@ -73,6 +73,23 @@ const DragProvider = props => {
         });
     };
 
+    const GroupHandle = categoryData => {
+        return (
+            <div
+                className="wip"
+                onDragOver={e => {
+                    onDragOver(e);
+                }}
+                onDrop={e => {
+                    onDrop(e, categoryData);
+                }}
+            >
+                <span className="task-header">A Group</span>
+                {domHandle(categoryData)}
+            </div>
+        );
+    };
+
     return (
         <DragContext.Provider
             value={{
@@ -81,7 +98,8 @@ const DragProvider = props => {
                 setIsDrag,
                 onDrop,
                 onDragOver,
-                domHandle
+                domHandle,
+                GroupHandle
             }}
         >
             {props.children}
