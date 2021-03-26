@@ -51,14 +51,14 @@ const DndDrag = () => {
         margin: `0 0 ${grid}px 0`,
 
         // 拖拽的时候背景变化
-        background: isDragging ? 'lightgreen' : 'red',
+        background: isDragging ? '#005CAF' : '#3A8FB7',
 
         // styles we need to apply on draggables
         ...draggableStyle
     });
 
     const getListStyle = () => ({
-        background: 'black',
+        background: '#0F2540',
         padding: grid,
         width: 250
     });

@@ -8,13 +8,13 @@ import { withRouter, Redirect, Link } from 'react-router-dom';
 // const cx = classNames.bind(classes);
 import './style_module.scss';
 
-class DndDragOrigin extends React.Component {
+class DragTableClass extends React.Component {
     state = {
         tasks: [
-            { name: 'AAAA', category: 'wip', bgcolor: 'red' },
-            { name: 'BBBB', category: 'wip', bgcolor: 'orange' },
-            { name: 'CCCC', category: 'complete', bgcolor: 'green' },
-            { name: 'DDDD', category: 'complete', bgcolor: 'blue' }
+            { name: 'AAAA', category: 'wip', bgcolor: '#9F353A' },
+            { name: 'BBBB', category: 'wip', bgcolor: '#A96360' },
+            { name: 'CCCC', category: 'complete', bgcolor: '#CB4042' },
+            { name: 'DDDD', category: 'complete', bgcolor: '#AB3B3A' }
         ]
     };
 
@@ -117,4 +117,4 @@ class DndDragOrigin extends React.Component {
 
 // ReactDOM.render(<DragTable />, document.getElementById('app'));
 
-export default withRouter(DndDragOrigin);
+export default withRouter(DragTableClass);

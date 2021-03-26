@@ -8,8 +8,9 @@ import NavTop from 'components/DesignSystem/NavTop';
 // component
 import Tab from './Tab';
 import DndDrag from './DndDrag';
-import DragTableOrigin from './DragTableOrigin';
-import DragTableV1 from './DragTableV1';
+import DragTableClass from './DragTableClass';
+import DragTableHooks from './DragTableHooks';
+import DragGroup from './DragGroup';
 import DragNoUse from './DragNoUse';
 
 // css
@@ -23,14 +24,19 @@ const Animate = ({ match }) => {
             component: DndDrag
         },
         {
-            title: 'DragTableOrigin',
-            path: 'dragTableOrigin',
-            component: DragTableOrigin
+            title: 'Class-Drag',
+            path: 'dragTableClass',
+            component: DragTableClass
         },
         {
-            title: 'DragTableV1',
-            path: 'dragTableV1',
-            component: DragTableV1
+            title: 'Hooks-Drag',
+            path: 'dragTableHooks',
+            component: DragTableHooks
+        },
+        {
+            title: 'dragGroup',
+            path: 'dragGroup',
+            component: DragGroup
         },
         {
             title: 'dragNoUse',
