@@ -11,6 +11,7 @@ import DndDrag from './DndDrag';
 import DragTableClass from './DragTableClass';
 import DragTableHooks from './DragTableHooks';
 import DragGroup from './DragGroup';
+import DragGroupV2 from './DragGroupV2';
 import DragNoUse from './DragNoUse';
 
 // css
@@ -37,6 +38,11 @@ const Animate = ({ match }) => {
             title: 'dragGroup',
             path: 'dragGroup',
             component: DragGroup
+        },
+        {
+            title: 'dragGroupv2',
+            path: 'dragGroupv2',
+            component: DragGroupV2
         },
         {
             title: 'dragNoUse',

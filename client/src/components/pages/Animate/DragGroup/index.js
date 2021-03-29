@@ -10,12 +10,12 @@ import DragProvider, { DragContext } from './Context/context_drag.js';
 import './style_module.scss';
 
 const data = [
-    { name: 'RD', category: 'wip', bgcolor: '#AB3B3A' },
-    { name: 'SA', category: 'wip', bgcolor: '#C18A26' },
-    { name: 'HR', category: 'wip', bgcolor: '#36563C' },
-    { name: 'PM', category: 'wip', bgcolor: '#0B1013' },
-    { name: 'UI', category: 'complete', bgcolor: '#6A4C9C' },
-    { name: 'UX', category: 'complete', bgcolor: '#787878' }
+    { name: 'RD', category: 'A', bgcolor: '#AB3B3A' },
+    { name: 'SA', category: 'A', bgcolor: '#C18A26' },
+    { name: 'HR', category: 'A', bgcolor: '#36563C' },
+    { name: 'PM', category: 'A', bgcolor: '#0B1013' }
+    // { name: 'UI', category: 'B', bgcolor: '#6A4C9C' },
+    // { name: 'UX', category: 'B', bgcolor: '#787878' }
 ];
 
 const Index = () => {
@@ -36,23 +36,23 @@ const DragGroup = () => {
     return (
         <div className="container-drag">
             {/* A Group */}
-            {GroupHandle('wip')}
+            {GroupHandle()}
 
-            <h1>VS</h1>
+            {/* <h1>VS</h1> */}
 
             {/* B Group */}
-            <div
+            {/* <div
                 className="droppable"
                 onDragOver={e => {
                     onDragOver(e);
                 }}
                 onDrop={e => {
-                    onDrop(e, 'complete');
+                    onDrop(e, 'B');
                 }}
             >
                 <span className="task-header">B Group</span>
-                {domHandle('complete')}
-            </div>
+                {domHandle('B')}
+            </div> */}
         </div>
     );
 };

@@ -1,30 +1,30 @@
-import React, { useState, useContext, createContext, useEffect, useRef } from 'react';
-import { withRouter } from 'react-router-dom';
-// import { injectIntl } from 'react-intl';
-// import { from, Observable, forkJoin } from 'rxjs';
-// import { map } from 'rxjs/operators';
+import React, { useState, createContext } from 'react';
 
 export const DragContext = createContext();
 
 const DragProvider = props => {
     const [isDrag, setIsDrag] = useState([]);
+    const [isKey, setIsKey] = useState();
 
-    const onDragStart = (ev, id) => {
-        console.log('dragstart:', id);
-        ev.dataTransfer.setData('id', id);
+    const onDragStart = (ev, id, index) => {
+        ev.dataTransfer.setData('name', id);
+        setIsKey(index);
     };
 
+    //Element正在拖動到放置目标时出發
     const onDragOver = ev => {
+        // console.log('on drop over div');
         ev.preventDefault();
     };
 
-    const onDragOverItem = ev => {
-        console.log('on drop over item');
-        ev.preventDefault();
+    // 当某被拖动的对象在另一对象容器
+    const onDragOverItem = (event, name, index) => {
+        event.preventDefault();
     };
 
+    // 拖動
     const onDrop = (ev, cat) => {
-        let id = ev.dataTransfer.getData('id');
+        let id = ev.dataTransfer.getData('name'); // 取得Dom中的data
 
         let drag = isDrag.filter(drg => {
             if (drg.name == id) {
@@ -35,45 +35,38 @@ const DragProvider = props => {
         setIsDrag(drag);
     };
 
-    const onDropItem = (ev, cat, t) => {
-        console.log(ev.target, t, cat);
-        let id = ev.dataTransfer.getData('id');
-
-        let tar = isDrag.filter(task => task.name == t)[0];
-        console.log('From->', id, cat, ' To->', tar.name, tar.category);
-        let drag = isDrag.filter(drg => {
-            if (drg.name == id) {
-                drg.category = tar.category;
-            } else if (drg.name == tar.name) {
-                drg.category = cat;
-            }
-            return drg;
-        });
-
-        setIsDrag(drag);
+    const onDropItem = (event, name, index) => {
+        let id = event.dataTransfer.getData('name');
+        console.log(isKey + '->' + id); // 被移動元素
+        console.log(index + '->' + name); // 被替換元素
+        let origin = isDrag[isKey];
+        isDrag[isKey] = isDrag[index];
+        isDrag[index] = origin;
+        setIsDrag(isDrag);
     };
 
-    const domHandle = categoryData => {
-        return isDrag.map(data => {
-            if (data.category === categoryData) {
-                return (
-                    <div
-                        key={data.name}
-                        onDragStart={e => onDragStart(e, data.name)}
-                        onDragOver={e => onDragOverItem(e)}
-                        onDrop={e => onDropItem(e, data.category == 'complete' ? 'wip' : 'complete', data.name)}
-                        draggable
-                        className="draggable"
-                        style={{ backgroundColor: data.bgcolor }}
-                    >
-                        {data.name}
-                    </div>
-                );
-            }
+    const domHandle = () => {
+        return isDrag.map((data, index) => {
+            return (
+                <div
+                    key={data.name}
+                    onDragStart={event => onDragStart(event, data.name, index)}
+                    onDragOver={event => onDragOverItem(event, data.name, index)}
+                    onDrop={event => onDropItem(event, data.name, index)}
+                    draggable={true} // 控制drag開關
+                    className="draggable"
+                    style={{ backgroundColor: data.bgcolor }}
+                    onClick={() => {
+                        console.log('click');
+                    }}
+                >
+                    <div>{data.name}</div>
+                </div>
+            );
         });
     };
 
-    const GroupHandle = categoryData => {
+    const GroupHandle = () => {
         return (
             <div
                 className="wip"
@@ -81,11 +74,11 @@ const DragProvider = props => {
                     onDragOver(e);
                 }}
                 onDrop={e => {
-                    onDrop(e, categoryData);
+                    onDrop(e);
                 }}
             >
                 <span className="task-header">A Group</span>
-                {domHandle(categoryData)}
+                {domHandle()}
             </div>
         );
     };
