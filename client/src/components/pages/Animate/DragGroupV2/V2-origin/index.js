@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+// DesignSystem
+import PrismCode from 'components/DesignSystem/PrismCode';
+import text from './text.json';
+
 // css
 import './style_module.scss';
 
@@ -85,6 +90,8 @@ const DragGroupV2 = ({ component }) => {
                     );
                 })}
             </div>
+
+            <PrismCode code={text.pen_content.replace(/↵/g, '\n')} />
         </div>
     );
 };

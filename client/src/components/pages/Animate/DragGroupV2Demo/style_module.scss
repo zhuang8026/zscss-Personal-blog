@@ -16,17 +16,24 @@
             color: #fff;
             margin-right: 10px;
         }
+        .demo1-2-2 {
+            justify-content: center;
+        }
         .demo1-2 {
             width: 90%;
             height: 74px;
             border: solid 2px rgba(255, 255, 255, 0.5);
             border-radius: 8px;
             display: flex;
-            justify-content: center;
+            // justify-content: center;
             align-items: center;
             p {
                 font-size: 16px;
                 color: #fff;
+            }
+            .demo1-2-icon {
+                width: 10%;
+                text-align: center;
             }
             .demo-color {
                 width: 30px;

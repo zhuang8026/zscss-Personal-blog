@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 // css
 import './style_module.scss';
 
-const DragGroupV2 = ({ value }) => {
+const DragGroupV2 = ({
+    value, // array
+    // children,
+    component, // object
+    onDrop = () => {},
+    onClick = () => {}
+}) => {
     const [isDrag, setIsDrag] = useState(value);
     const [isKey, setIsKey] = useState();
 
-    console.log(isDrag);
-
     // ------ 第一層(父) ------
     // 拖動
-    const onDrop = (ev, cat) => {
+    const onDropV2 = (ev, cat) => {
         let id = ev.dataTransfer.getData('name'); // 取得Dom中的data
 
         let drag = isDrag.filter((drg, index) => {
@@ -40,17 +44,18 @@ const DragGroupV2 = ({ value }) => {
 
     // 保存替換資料
     const onDropItem = (event, index) => {
-        let id = event.dataTransfer.getData('name');
+        // let id = event.dataTransfer.getData('name');
         console.log(isKey + '->' + index); // 被移動元素 -> 被替換元素
         let origin = isDrag[isKey];
         isDrag[isKey] = isDrag[index];
         isDrag[index] = origin;
         setIsDrag(isDrag);
+        onDrop(isDrag);
     };
 
-    // useEffect(() => {
-    //     setIsDrag([...dataV2]);
-    // }, []);
+    const handleClick = event => {
+        onClick(event);
+    };
 
     return (
         <div
@@ -59,36 +64,21 @@ const DragGroupV2 = ({ value }) => {
                 onDragOver(e);
             }}
             onDrop={e => {
-                onDrop(e);
+                onDropV2(e);
             }}
         >
             {isDrag.map((data, index) => {
                 return (
                     <div
-                        key={`drag_${index}`}
+                        className="draggable"
+                        key={`drag-${index}`}
+                        draggable={data != '' ? true : false}
                         onDragStart={event => onDragStart(event, index)}
                         onDragOver={event => onDragOverItem(event)}
                         onDrop={event => onDropItem(event, index)}
-                        draggable={true}
-                        className="draggable"
+                        onClick={() => handleClick(data)}
                     >
-                        {data.status ? (
-                            <div className="demo1-1">
-                                <span>{data.perCent}</span>
-                                <div className="demo1-2">
-                                    <p>:::</p>
-                                    <div className="demo-color"></div>
-                                    <p>{data.inner}</p>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="demo1-1">
-                                <span>{data.perCent}</span>
-                                <div className="demo1-2">
-                                    <p>+</p>
-                                </div>
-                            </div>
-                        )}
+                        {component(data)}
                     </div>
                 );
             })}

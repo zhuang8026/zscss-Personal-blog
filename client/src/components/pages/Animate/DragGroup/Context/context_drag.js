@@ -77,7 +77,7 @@ const DragProvider = props => {
                     onDrop(e);
                 }}
             >
-                <span className="task-header">A Group</span>
+                {/* <span className="task-header">A Group</span> */}
                 {domHandle()}
             </div>
         );

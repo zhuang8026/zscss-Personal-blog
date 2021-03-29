@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import { withRouter, Link, Redirect } from 'react-router-dom';
-import classnames from 'classnames';
-import posed from 'react-pose';
+import React, { useEffect, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
+
+// DesignSystem
+import PrismCode from 'components/DesignSystem/PrismCode';
+import text from './text.json';
 
 // Context
 import DragProvider, { DragContext } from './Context/context_drag.js';
@@ -14,8 +16,6 @@ const data = [
     { name: 'SA', category: 'A', bgcolor: '#C18A26' },
     { name: 'HR', category: 'A', bgcolor: '#36563C' },
     { name: 'PM', category: 'A', bgcolor: '#0B1013' }
-    // { name: 'UI', category: 'B', bgcolor: '#6A4C9C' },
-    // { name: 'UX', category: 'B', bgcolor: '#787878' }
 ];
 
 const Index = () => {
@@ -37,22 +37,7 @@ const DragGroup = () => {
         <div className="container-drag">
             {/* A Group */}
             {GroupHandle()}
-
-            {/* <h1>VS</h1> */}
-
-            {/* B Group */}
-            {/* <div
-                className="droppable"
-                onDragOver={e => {
-                    onDragOver(e);
-                }}
-                onDrop={e => {
-                    onDrop(e, 'B');
-                }}
-            >
-                <span className="task-header">B Group</span>
-                {domHandle('B')}
-            </div> */}
+            <PrismCode code={text.pen_content.replace(/↵/g, '\n')} />
         </div>
     );
 };

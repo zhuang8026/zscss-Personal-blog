@@ -76,7 +76,7 @@ const DndDrag = () => {
                             style={getListStyle(snapshot)}
                         >
                             {items.map((item, index) => (
-                                <Draggable key={item.id} draggableId={item.id} index={index}>
+                                <Draggable key={item.id} draggableId={item.id} index={index} isDragDisabled={false}>
                                     {(provided, snapshot) => (
                                         <div
                                             ref={provided.innerRef}
