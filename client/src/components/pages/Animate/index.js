@@ -7,12 +7,15 @@ import NavTop from 'components/DesignSystem/NavTop';
 
 // component
 import Tab from './Tab';
+// Drag
 import DndDrag from './DndDrag';
 import DragTableClass from './DragTableClass';
 import DragTableHooks from './DragTableHooks';
 import DragGroup from './DragGroup';
 import DragGroupV2 from './DragGroupV2/V2-origin';
 import DragGroupV2Demo from './DragGroupV2Demo';
+// Gsap
+import GsapLoading from './GsapLoading';
 
 // css
 import './style_module.scss';
@@ -48,6 +51,11 @@ const Animate = ({ match }) => {
             title: 'dragGroupv2Demo',
             path: 'dragGroupv2Demo',
             component: DragGroupV2Demo
+        },
+        {
+            title: 'gsapLoading',
+            path: 'gsapLoading',
+            component: GsapLoading
         }
     ];
 

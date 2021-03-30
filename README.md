@@ -7,7 +7,7 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
 - 基礎技術支持: html5(websocket) + sass
 - 前端技術支持: react.js + hooks + javaScript(ES6)
 - 後端技術支持: node.js + express.js + mysql
-- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from) + [js-cookie](https://www.npmjs.com/package/js-cookie) + [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) + [react-pose](https://popmotion.io/pose/learn/install/) + [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/installation.md)
+- 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn) + [classnames](https://www.npmjs.com/package/classnames) + [moment](http://momentjs.cn/) + [axios](https://www.npmjs.com/package/axios) + [rxjs cn](https://cn.rx.js.org/manual/installation.html) or [rxjs](https://rxjs-dev.firebaseapp.com/api/index/function/from) + [js-cookie](https://www.npmjs.com/package/js-cookie) + [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) + [react-pose](https://popmotion.io/pose/learn/install/) + [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/installation.md) + [gsap](https://greensock.com/docs/v3/Installation#esModules)
 - git 技術: git (github / bitbucket)
 - 編輯器技術: vscode
 
@@ -27,14 +27,15 @@ I am mainly sharing the learning experience of react and vue. Of course, there m
     "prism-react-renderer": "^1.1.1"
     "react-pose": "^4.0.10"
     "react-beautiful-dnd": "^13.0.0"
+    "gsap": "^3.6.1"
 
 ### `- 功能說明 -`
 
 <!-- 增加（Create，意为“创建”）、删除（Delete）、查询（Read，意为“读取”）、改正（Update，意为“更新”） -->
 
 - 星星評分分析 (R)
-- admin 系統 (CRUD)
-- search 模糊搜尋
+- Admin 系統 (CRUD)
+- Search 模糊搜尋
 - Drag 卡片拖拽功能
 
 ### `- 版本控制 -`

@@ -34,7 +34,12 @@ app.use(
 
 const cors = require("cors");
 
-const whitelist = [undefined, "http://localhost:3000", "http://localhost:3001"];
+const whitelist = [
+  undefined,
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://zscss.com",
+];
 const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
