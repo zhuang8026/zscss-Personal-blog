@@ -7,7 +7,7 @@ const router = express.Router();
 
 //http://localhost:3009/products/
 router.get("/", (req, res) => {
-  res.send("產品列表");
+  res.send("javascript items pages - william");
 });
 
 // 星星評分

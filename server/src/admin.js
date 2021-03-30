@@ -9,7 +9,7 @@ const router = express.Router();
 // http://localhost:3009/admin/
 router.get("/", (req, res) => {
   console.log(req.session); // Pusheen
-  res.send("admin");
+  res.send("admin login page - william");
 });
 
 // admin登入 | signin 使用

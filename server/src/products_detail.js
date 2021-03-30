@@ -7,7 +7,7 @@ const router = express.Router();
 
 //http://localhost:3009/products/
 router.get("/", (req, res) => {
-  res.send("BLOG 細節頁");
+  res.send("javaScript detail pages - william");
 });
 
 // 細節頁面資料
