@@ -34,12 +34,7 @@ app.use(
 
 const cors = require("cors");
 
-const whitelist = [
-  undefined,
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://zscss009.herokuapp.com",
-];
+const whitelist = [undefined, "http://localhost:3000", "http://localhost:3001"];
 const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
