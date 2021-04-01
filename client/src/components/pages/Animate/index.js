@@ -15,6 +15,7 @@ import DragGroup from './DragGroup';
 import DragGroupV2 from './DragGroupV2/V2-origin';
 import DragGroupV2Demo from './DragGroupV2Demo';
 import Dragv2AutoScroll from './Dragv2AutoScroll';
+import Dragv2AutoScrollV3 from './Dragv2AutoScrollV3';
 
 // Gsap
 import GsapLoading from './GsapLoading';
@@ -58,6 +59,11 @@ const Animate = ({ match }) => {
             title: 'dragv2AutoScroll',
             path: 'dragv2AutoScroll',
             component: Dragv2AutoScroll
+        },
+        {
+            title: 'dragv2AutoScrollv3',
+            path: 'dragv2AutoScrollv3',
+            component: Dragv2AutoScrollV3
         },
         {
             title: 'gsapLoading',
