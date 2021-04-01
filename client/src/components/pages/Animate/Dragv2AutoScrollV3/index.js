@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 
-import DragGroupV3 from '../DragGroupV3';
+import DragGroupV3 from '../Component/DragGroupV3';
 
 // css
 import './style_module.scss';

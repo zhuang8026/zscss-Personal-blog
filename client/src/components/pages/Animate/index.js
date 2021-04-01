@@ -12,9 +12,9 @@ import DndDrag from './DndDrag';
 import DragTableClass from './DragTableClass';
 import DragTableHooks from './DragTableHooks';
 import DragGroup from './DragGroup';
-import DragGroupV2 from './DragGroupV2/V2-origin';
+import DragGroupV2Normal from './DragGroupV2Normal';
 import DragGroupV2Demo from './DragGroupV2Demo';
-import Dragv2AutoScroll from './Dragv2AutoScroll';
+import Dragv2AutoScrollv2 from './Dragv2AutoScrollv2';
 import Dragv2AutoScrollV3 from './Dragv2AutoScrollV3';
 
 // Gsap
@@ -47,8 +47,8 @@ const Animate = ({ match }) => {
         },
         {
             title: 'dragGroupv2-normal',
-            path: 'dragGroupv2',
-            component: DragGroupV2
+            path: 'DragGroupV2Normal',
+            component: DragGroupV2Normal
         },
         {
             title: 'dragGroupv2Demo',
@@ -56,9 +56,9 @@ const Animate = ({ match }) => {
             component: DragGroupV2Demo
         },
         {
-            title: 'dragv2AutoScroll',
-            path: 'dragv2AutoScroll',
-            component: Dragv2AutoScroll
+            title: 'dragv2AutoScrollv2',
+            path: 'dragv2AutoScrollv2',
+            component: Dragv2AutoScrollv2
         },
         {
             title: 'dragv2AutoScrollv3',
