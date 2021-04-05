@@ -17,6 +17,9 @@ import DragGroupV2Demo from './DragGroupV2Demo';
 import Dragv2AutoScrollv2 from './Dragv2AutoScrollv2';
 import Dragv2AutoScrollV3 from './Dragv2AutoScrollV3';
 
+// IndexedDB
+import SaveToIndexedDB from './SaveToIndexedDB';
+
 // Gsap
 import GsapLoading from './GsapLoading';
 
@@ -64,6 +67,11 @@ const Animate = ({ match }) => {
             title: 'dragv2AutoScrollv3',
             path: 'dragv2AutoScrollv3',
             component: Dragv2AutoScrollV3
+        },
+        {
+            title: 'saveToIndexedDB',
+            path: 'saveToIndexedDB',
+            component: SaveToIndexedDB
         },
         {
             title: 'gsapLoading',
