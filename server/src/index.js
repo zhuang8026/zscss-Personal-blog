@@ -39,13 +39,13 @@ const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
     // 方法一
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
+    // if (whitelist.indexOf(origin) !== -1) {
+    //   callback(null, true);
+    // } else {
+    //   callback(null, false);
+    // }
     // 方法二
-    // callback(null, true); // 这样是允许全部IP使用，这样就不用 whitelist
+    callback(null, true); // 这样是允许全部IP使用，这样就不用 whitelist
   },
 };
 app.use(cors(corsOptions));
@@ -91,6 +91,6 @@ app.use((req, res) => {
 // server 侦听 3009
 app.listen(process.env.PORT || 3009, () => {
   console.log(
-    "server work - please use localhost:3009, William-server control"
+    `server work - please use localhost:3009 or app is running on port ${process.env.PORT} - William-server control`
   );
 });

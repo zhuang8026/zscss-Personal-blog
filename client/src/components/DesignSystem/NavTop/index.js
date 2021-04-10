@@ -35,6 +35,7 @@ const NavTop = () => {
     };
 
     // 監聽admin 是否有將瀏覽器關閉，如果關閉，就立即將admin登出 (測試中)
+    // 暫時停用 - 20210410
     const getuserAgentHandle = () => {
         let userAgent = navigator.userAgent;
         let isOpera = userAgent.indexOf('Opera') > -1; //判斷是否Opera瀏覽器
@@ -79,7 +80,7 @@ const NavTop = () => {
     };
 
     useEffect(() => {
-        getuserAgentHandle();
+        // getuserAgentHandle();
     });
 
     useEffect(() => {

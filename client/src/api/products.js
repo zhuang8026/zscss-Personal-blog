@@ -1,8 +1,10 @@
+const DOMAIN = process.env.REACT_APP_API_DOMAIN || 'http://localhost:3009';
+
 // product001 獲取分頁資料
 export const productsPagesAPI = (method, data) => {
     return {
         method: method,
-        baseURL: 'http://localhost:3009', // window.location.origin
+        baseURL: DOMAIN, // window.location.origin
         url: `products/pages/${data.isPage}/${data.isStar}`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -13,7 +15,7 @@ export const productsPagesAPI = (method, data) => {
 export const ratingAllAPI = method => {
     return {
         method: method,
-        baseURL: 'http://localhost:3009',
+        baseURL: DOMAIN,
         url: `products/all`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -24,7 +26,7 @@ export const ratingAllAPI = method => {
 export const detailPenAPI = (method, data) => {
     return {
         method: method,
-        baseURL: 'http://localhost:3009',
+        baseURL: DOMAIN,
         url: `products_detail/detail/${data.id}`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -35,7 +37,7 @@ export const detailPenAPI = (method, data) => {
 export const postSearchCardListAPI = data => {
     return {
         method: 'POST',
-        baseURL: 'http://localhost:3009',
+        baseURL: DOMAIN,
         url: `products/search`,
         Accept: 'application/json',
         'Content-Type': 'application/json',
