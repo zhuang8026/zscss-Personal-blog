@@ -1,3 +1,7 @@
+heroku 一個月有免費550小時，使用使用卡可以增加450個小時，以公司 1000個小時。
+    -> 查看 剩餘時間
+        -> heroku ps -a <app name>
+            -> heroku ps -a zscss-server
 1. 環境建置
     -> heroku 註冊
     -> 安裝 Heroku Cli
