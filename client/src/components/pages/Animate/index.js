@@ -22,7 +22,8 @@ import SaveToIndexedDB from './SaveToIndexedDB';
 import HoverCreateElement from './HoverCreateElement';
 // Gsap
 import GsapLoading from './GsapLoading';
-
+// MoveToDomAnimation
+import MoveToDomAnimation from './MoveToDomAnimation';
 // css
 import './style_module.scss';
 
@@ -82,6 +83,11 @@ const Animate = ({ match }) => {
             title: 'gsapLoading',
             path: 'gsapLoading',
             component: GsapLoading
+        },
+        {
+            title: 'moveToDomAnimation',
+            path: 'moveToDomAnimation',
+            component: MoveToDomAnimation
         }
     ];
 
