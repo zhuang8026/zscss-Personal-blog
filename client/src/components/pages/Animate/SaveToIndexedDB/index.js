@@ -63,7 +63,7 @@ const SaveToIndexedDB = () => {
         let xhr = new XMLHttpRequest(),
             blob;
 
-        xhr.open('GET', require(`images/animate/getReward.png`), true);
+        xhr.open('GET', require(`images/animate/getreward.png`), true);
         // Set the responseType to blob
         xhr.responseType = 'blob';
 
