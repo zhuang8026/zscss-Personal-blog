@@ -52,7 +52,9 @@ app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   // req=> 请求 res => 響應
-  res.send("hello! welcome to william node.js api.");
+  res.send(
+    "hello! welcome to william node.js api. this api use zscss blog web"
+  );
 
   // 測試 session
   req.session.userName = "Pusheen";

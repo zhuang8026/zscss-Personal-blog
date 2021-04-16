@@ -37,7 +37,8 @@ heroku 一個月有免費550小時，使用使用卡可以增加450個小時，�
         -> cmd 請輸入：heroku config:set NPM_CONFIG_PRODUCTION=false 
     -> Heroku不安裝dev依賴項
         -> 所以才要加 "start:dev"
-
+3-1. 如果連結 Heroku ?
+    -> git pull heroku master
 
 4. MySQL 配置
     -> heroku addons:create cleardb:ignite
