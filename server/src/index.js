@@ -53,7 +53,7 @@ app.use(cors(corsOptions));
 app.get("/", (req, res) => {
   // req=> 请求 res => 響應
   res.send(
-    "hello! welcome to william node.js api. this api use zscss blog web."
+    "hello! welcome to william node.js api. this api use zscss blog web. - v2"
   );
 
   // 測試 session

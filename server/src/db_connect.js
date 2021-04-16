@@ -10,7 +10,7 @@ const mysql = require("mysql2"); //使用
 //   queueLimit: 0, // 无限制连线人数
 // });
 
-// heroku database
+// heroku database v2
 const pool = mysql.createPool({
   host: "us-cdbr-east-03.cleardb.com" || "localhost",
   user: "b9105bffb96221" || "otis",
