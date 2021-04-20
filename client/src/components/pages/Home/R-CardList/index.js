@@ -80,7 +80,6 @@ const CardList = ({ history }) => {
         fetchListener.current = axios(productsPagesAPI('GET', data))
             .then(res => {
                 if (res.status === 200) {
-                    // console.log(res);
                     setIsLoading(false);
                     setIsData(res.data);
                     setIsArray(res.data.rows);
