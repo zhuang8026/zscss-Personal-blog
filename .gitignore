@@ -4,13 +4,14 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/.github
+.github
 /client/node_modules
 /client/package-lock.json
 /client/build
 /server/node_modules
 /server/package-lock.json
 yarn.lock
+node_modules
 
 # testing
 /coverage
